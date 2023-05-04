@@ -10,3 +10,9 @@ body{
     width: 18rem;
     height: auto;
 }
+
+.gallery-title{
+    margin-top: 3%;
+    text-align: center;
+    color: #ffffff;
+}
