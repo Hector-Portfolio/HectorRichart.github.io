@@ -33,3 +33,20 @@ body{
     font-size: 100%;
 }
 
+.img-thumbnail{
+    height: 20%;
+    width: 20%;
+    border: transparent;
+    cursor: pointer;
+    margin-left: 2%;
+    margin-bottom: 5%;  
+}
+
+.right-part{
+    border: 5px solid;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 5%;
+}
