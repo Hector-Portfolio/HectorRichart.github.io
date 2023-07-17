@@ -34,7 +34,7 @@ body{
 
 .img-thumbnail{
     height: 20%;
-    width: 20%;
+    width: 50%;
     border: transparent;
     cursor: pointer;
     margin-left: 2%;
