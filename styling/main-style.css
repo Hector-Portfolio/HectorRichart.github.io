@@ -44,8 +44,9 @@ body{
 
 .right-part{
     margin: auto;
-    width: 50%;
+    width: 40%;
     padding: 10px;
-    text-align: center;
     margin-bottom: 5%;
+    right: 26%;
+    position: relative;
 }
