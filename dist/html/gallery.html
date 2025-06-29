@@ -2,185 +2,219 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv='cache-control' content='no-cache'> 
-<meta http-equiv='expires' content='0'> 
-<meta http-equiv='pragma' content='no-cache'>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-  <title>Gallery</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photo Gallery – Héctor Richart</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #212529;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+    }
+
+    /* Título principal */
+    .gallery-title {
+      margin: 3rem 0 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #0d6efd;
+    }
+
+    /* Carrusel */
+    .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 70vh;          /* Alto fijo para todas las slides */
+    }
+
+    /* Caption */
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: .5rem;
+      padding: 1rem 1.25rem;
+    }
+
+    .carousel-caption p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Quitar flechas en pantallas XS (tacto) pero dejar swipe activo */
+    @media (max-width: 575.98px) {
+      .carousel-control-prev,
+      .carousel-control-next {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../../index.html" style="font-size: 200%;">Hector Richart</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="../.././index.html">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="HectorRichart.github.io../../resume.html" style="font-size: 150%;">Work Experience/Skills</a>
+            <a class="nav-link" href="resume.html">Experience / Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="HectorRichart.github.io../../gallery.html" style="font-size: 150%;">Photo Gallery</a>
+            <a class="nav-link" href="gallery.html">Photo Gallery</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="gallery-title">
-    <h1>This is a photo gallery so you can get to know me better!</h1>
-  </div>
-  <div class="container px-4">
-    <div class="row gx-5">
-      <div class="col">
-        <div class="card">
-          <img src="../../images/microsoft_hq.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">This picture was taken on my first day at Microfost HQ offices in Redmond, Washington. It was an 
-              exciting first day where I met new people and entered Microsoft Facilities for the first time.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="../../images/xcaret.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Highly recommend visiting Xcaret park in Cancún México if you have not had the chance!.
-              I went there after my internship at Microsoft in August 2022.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="../../images/cancun-dolphins.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">This picture was taken the same day as the last one, I was in Xcaret park. My 
-              sister and I went to swin with a Dolphin and had the chance to touch them.
-            </p>
-          </div>
-        </div>
-      </div>
+
+  <!-- Título -->
+  <h1 class="gallery-title">Get to Know Me Through Photos</h1>
+
+  <!-- Carrusel -->
+  <div id="photoCarousel" class="carousel slide mx-auto mb-5" data-bs-ride="carousel" style="max-width: 1000px;">
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <!-- Se generan tantos <button> como slides. 0..11 -->
+      <!-- activo en la primera -->
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="10" aria-label="Slide 11"></button>
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="11" aria-label="Slide 12"></button>
     </div>
-    <div class="row gx-5">
-      <div class="col">
-        <div class="card">
-          <img src="../../images/me-at-corporate.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">One of my first days at Microsoft Corporation, I was working in the Bellevue offices 
-              in Washington and I was wearing a picture they gave me at the organization.
-            </p>
-          </div>
+
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="../../images/microsoft_hq.jpg" alt="Microsoft HQ Redmond" />
+        <div class="carousel-caption">
+          <p>First day at Microsoft HQ in Redmond – meeting new colleagues and exploring the campus.</p>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
-          <img src="../../images/downtown-seattle.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">This day I went to downtown Seattle by myself and explored a little bit,
-              I was next to the aquarium and got this nice view.
-            </p>
-          </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="../../images/xcaret.jpg" alt="Xcaret Park" />
+        <div class="carousel-caption">
+          <p>Enjoying Xcaret Park in Cancún, México, right after finishing my internship in 2022.</p>
         </div>
       </div>
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/seattle-view.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">A gathering in golden's beach in Seattle made by and for interns, it was cold
-                that day even though is a beach so that's the reason I am wearing a jacket :)
-              </p>
-            </div>
-          </div>
-        </div>
-      <div class="col">
-      </div>
-    </div>
-    <div class="row gx-5">
-      <div class="col">
-        <div class="card">
-          <img src="../../images/me-at-seattle-port.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">Exploring Seattle by myself, this time I made it to a port where I found
-              a couple of strangers and asked them to get a picture for me.
-            </p>
-          </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="../../images/cancun-dolphins.jpg" alt="Swimming with dolphins" />
+        <div class="carousel-caption">
+          <p>Swimming with dolphins in Xcaret – an unforgettable moment shared with my sister.</p>
         </div>
       </div>
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/chinatown.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">This picture was taken in Mexico city, I went to visit the chinatown where I bought a lot
-                of interesting stuff and had a nice time.
-              </p>
-            </div>
-          </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <img src="../../images/me-at-corporate.jpg" alt="Me at Microsoft Bellevue" />
+        <div class="carousel-caption">
+          <p>Settling in at Microsoft Bellevue offices – proudly wearing my new badge.</p>
         </div>
       </div>
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/view-office.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">This photo was taken from Microsoft Office in Bellevue in the floor I used to work (Floor 17),
-                 Fun fact: I was staying in the Marriot hotel that you can see in the picture.
-              </p>
-            </div>
-          </div>
+
+      <!-- Slide 5 -->
+      <div class="carousel-item">
+        <img src="../../images/downtown-seattle.jpg" alt="Downtown Seattle" />
+        <div class="carousel-caption">
+          <p>Solo adventure in downtown Seattle – soaking in the waterfront views.</p>
         </div>
       </div>
-    </div>
-    <div class="row gx-5">
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/badge-msft.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">First day at Microsoft, I was very excited to get my badge with my name. It was feeling like 
-                a dream to be there.
-              </p>
-            </div>
-          </div>
+
+      <!-- Slide 6 -->
+      <div class="carousel-item">
+        <img src="../../images/seattle-view.jpg" alt="Golden’s Beach Gathering" />
+        <div class="carousel-caption">
+          <p>Intern gathering at Golden’s Beach – yes, Seattle beaches are chilly!</p>
         </div>
       </div>
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/space-needle.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">In this picture you can see the famous space needle located in Seattle along with a very 
-                nice afternoon. This picture was taken after having a very good pizza.</p>
-            </div>
-          </div>
+
+      <!-- Slide 7 -->
+      <div class="carousel-item">
+        <img src="../../images/me-at-seattle-port.jpg" alt="Seattle Port" />
+        <div class="carousel-caption">
+          <p>Exploring Seattle’s port area – photo courtesy of some friendly strangers.</p>
         </div>
       </div>
-      <div class="col">
-        <div class="col">
-          <div class="card">
-            <img src="../../images/juarez-view.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">This is a picture from Juarez, Chihuahua in Mexico where I am from. Fun fact about this picture: 
-                I took it when I was on my way to have a date with the girl that is actually my girlfriend.
-              </p>
-            </div>
-          </div>
+
+      <!-- Slide 8 -->
+      <div class="carousel-item">
+        <img src="../../images/chinatown.jpg" alt="Mexico City Chinatown" />
+        <div class="carousel-caption">
+          <p>A stroll through Mexico City’s Chinatown – great food and unique finds.</p>
+        </div>
+      </div>
+
+      <!-- Slide 9 -->
+      <div class="carousel-item">
+        <img src="../../images/view-office.jpg" alt="View from Microsoft Bellevue" />
+        <div class="carousel-caption">
+          <p>View from the 17th floor of Microsoft Bellevue – my temporary home (Marriott) in sight!</p>
+        </div>
+      </div>
+
+      <!-- Slide 10 -->
+      <div class="carousel-item">
+        <img src="../../images/badge-msft.jpg" alt="Microsoft Badge" />
+        <div class="carousel-caption">
+          <p>Dream come true – receiving my Microsoft badge on day one.</p>
+        </div>
+      </div>
+
+      <!-- Slide 11 -->
+      <div class="carousel-item">
+        <img src="../../images/space-needle.jpg" alt="Space Needle Seattle" />
+        <div class="carousel-caption">
+          <p>The iconic Space Needle – captured after a delicious pizza dinner.</p>
+        </div>
+      </div>
+
+      <!-- Slide 12 -->
+      <div class="carousel-item">
+        <img src="../../images/juarez-view.jpg" alt="Juarez View" />
+        <div class="carousel-caption">
+          <p>A beautiful Juarez sunset – taken on my way to a very special date.</p>
         </div>
       </div>
     </div>
 
+    <!-- Controles izquierda/derecha -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <link rel="stylesheet" href="HectorRichart.github.io../../../../styling/gallery.css">
+
 </body>
 
 </html>

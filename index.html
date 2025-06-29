@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Héctor Richart - Computer Science graduate and software developer." />
-  <title>Héctor Richart - Portfolio</title>
+  <meta name="description" content="Portfolio of Héctor Richart – Computer Science graduate and software developer." />
+  <title>Héctor Richart – Portfolio</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -13,16 +13,18 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 
   <style>
+    /* ────────── Estilos generales de la portada ────────── */
     body {
       background-color: #ffffff;
       color: #444;
       font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Sección Hero */
     .hero {
       display: flex;
       flex-direction: column;
@@ -47,6 +49,7 @@
       line-height: 1.8;
     }
 
+    /* Iconos sociales */
     .contact-icons img {
       width: 45px;
       margin: 0 1rem;
@@ -59,15 +62,7 @@
       filter: brightness(1.2);
     }
 
-    footer {
-      margin-top: 3rem;
-      padding: 2rem 1rem;
-      background-color: #f8f9fa;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
+    /* Navbar */
     .navbar-brand {
       font-weight: 700;
       font-size: 1.8rem;
@@ -77,20 +72,29 @@
       font-size: 1.1rem;
     }
 
-    /* Link hover for navbar */
     .nav-link:hover {
-      color: #198754; /* Bootstrap success green */
+      color: #198754; /* Bootstrap success */
     }
 
-    /* Let's Connect Section heading */
+    /* Sección “Let’s Connect” */
     .lets-connect h2 {
       font-weight: 600;
     }
 
-    /* Button style */
+    /* Botón de descarga */
     .btn-success {
       font-weight: 600;
       font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding: 2rem 1rem;
+      background-color: #f8f9fa;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
@@ -118,7 +122,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <img src="images/seattle-view.jpg" alt="View of Seattle cityscape" />
     <h1 class="display-5 fw-bold">Hi there, I'm Héctor 👋</h1>
@@ -130,57 +134,58 @@
     </p>
   </section>
 
-  <!-- About Me Section -->
+  <!-- About Me -->
   <section class="py-5 bg-light">
     <div class="container">
       <div class="row align-items-center">
-        <!-- Texto About Me -->
         <div class="col-md-6">
           <h2 class="mb-4 fw-semibold">About Me</h2>
           <p style="font-size: 1.15rem; line-height: 1.8;">
-            I'm passionate about building efficient and user-friendly software solutions that improve operations and
-            user experiences. I thrive in environments where I can solve real-world problems with technology,
-            especially in fast-paced industries like manufacturing. My background bridges the gap between IT support and
-            software development, and I enjoy working cross-functionally with engineering, quality, and operations
+            I'm passionate about building efficient and user‑friendly software solutions that improve operations and
+            user experiences. I thrive in environments where I can solve real‑world problems with technology,
+            especially in fast‑paced industries like manufacturing. My background bridges the gap between IT support and
+            software development, and I enjoy working cross‑functionally with engineering, quality, and operations
             teams.
           </p>
         </div>
 
-        <!-- Imagen -->
         <div class="col-md-6 text-center">
-          <img src="images/microsoft_hq.jpg" alt="Microsoft Headquarters" class="img-fluid rounded shadow-sm"
-            style="max-height: 350px; object-fit: cover;" />
+          <img src="images/microsoft_hq.jpg" alt="Microsoft Headquarters"
+               class="img-fluid rounded shadow-sm" style="max-height: 350px; object-fit: cover;" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Download Résumé & Let's Connect Section -->
+  <!-- Résumé + Contact -->
   <section class="py-5 bg-light">
     <div class="container">
       <div class="row align-items-center justify-content-center">
 
-        <!-- Download Résumé Column -->
+        <!-- Download -->
         <div class="col-md-5 mb-4 mb-md-0">
           <div class="card shadow-sm border-0">
             <div class="card-body text-center">
               <h3 class="card-title mb-3">Need My Résumé?</h3>
               <p class="card-text mb-4">Download my full résumé in PDF format and keep it handy for later.</p>
-              <a href="assets/hector_richart_resume.pdf" download class="btn btn-success btn-lg" aria-label="Download résumé PDF">
+              <a href="assets/hector_richart_resume.pdf" download
+                 class="btn btn-success btn-lg" aria-label="Download résumé PDF">
                 <i class="bi bi-download me-2"></i> Download PDF
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Let's Connect Column -->
+        <!-- Let's connect -->
         <div class="col-md-5 text-center lets-connect">
           <h2 class="mb-4">Let's Connect</h2>
           <div class="contact-icons mb-4">
-            <a href="https://www.linkedin.com/in/hector-richart/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="mx-3">
+            <a href="https://www.linkedin.com/in/hector-richart/" target="_blank" rel="noopener noreferrer"
+               aria-label="LinkedIn profile" class="mx-3">
               <img src="images/linkedin.png" alt="LinkedIn Logo" />
             </a>
-            <a href="https://github.com/HectorRichart" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="mx-3">
+            <a href="https://github.com/HectorRichart" target="_blank" rel="noopener noreferrer"
+               aria-label="GitHub profile" class="mx-3">
               <img src="images/github_logo.png" alt="GitHub Logo" />
             </a>
           </div>
@@ -192,11 +197,12 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Héctor Richart. All rights reserved.</p>
+    <p>© 2025 Héctor Richart. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
