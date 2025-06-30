@@ -96,6 +96,38 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+    /* ───── Responsive tweaks ───────────────────────────── */
+@media (max-width: 767.98px) {
+
+  /* Hero: menos padding y títulos más compactos */
+  .hero { padding: 2.5rem 1rem; }
+  .hero img { width: 140px; height: 140px; margin-bottom: 1rem; }
+  .hero h1.display-5 { font-size: 1.9rem; }
+  .hero .lead { font-size: 1rem; }
+
+  /* Botón principal más cómodo para el pulgar */
+  .hero .btn-lg {
+    font-size: 1rem;
+    padding: .55rem 1.25rem;
+    width: 100%;            /* ocupa todo el ancho del contenedor */
+  }
+
+  /* About Me: apila primero la imagen, luego el texto */
+  .about-me-section .row { flex-direction: column-reverse; }
+  .about-me-section img { width: 100%; max-height: 260px; margin-bottom: 1.5rem; }
+
+  /* “Need My Résumé / Let’s Connect” → columnas se apilan */
+  #contact .row { flex-direction: column; }
+  #contact .col-md-6 { max-width: 100%; }
+
+  /* Contact icons un poco más pequeños */
+  .contact-icons img { width: 36px; margin: 0 .6rem; }
+
+  /* Footer padding más compacto */
+  footer { padding: 1.25rem 1rem; font-size: .8rem; }
+}
+
   </style>
 </head>
 
@@ -131,7 +163,7 @@
   </section>
 
   <!-- About Me -->
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light about-me-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
