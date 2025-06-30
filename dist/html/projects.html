@@ -106,35 +106,34 @@
       color: #4ade80;
     }
 
-    /* TITULO */
-    h1.page-title {
-      text-align: center;
-      margin: 3rem 0 1.5rem;
-      font-weight: 600;
-      font-size: 2.3rem;
-      color: #2c3e50; /* Azul grafito serio */
-      position: relative;
-      transition: color 0.3s ease;
-    }
+    h1.page-title{
+  text-align:center;
+  margin:3rem 0 1.5rem;
+  font-weight:600;
+  font-size:2.3rem;
+  color:#2c3e50;        /* modo claro – grafito */
+  position:relative;
+  transition:color .3s ease;
+}
 
-    body.dark-mode h1.page-title {
-      color: #a0d468;
-    }
+    body.dark-mode h1.page-title{
+  color:#e0e0e0;        /* modo oscuro – mismo tono que usas en index/resume */
+}
 
-    h1.page-title::after {
-      content: "";
-      display: block;
-      width: 80px;
-      height: 2px;
-      background: #adb5bd; /* Gris claro neutral */
-      margin: 0.75rem auto 0;
-      border-radius: 1px;
-      transition: background-color 0.3s ease;
-    }
+    h1.page-title::after{               /* la rayita bajo el título */
+  content:"";
+  display:block;
+  width:80px;
+  height:2px;
+  background:#adb5bd;
+  margin:.75rem auto 0;
+  border-radius:1px;
+  transition:background-color .3s ease;
+}
 
-    body.dark-mode h1.page-title::after {
-      background: #6b7280;
-    }
+    body.dark-mode h1.page-title::after{
+  background:#555;       /* igual que el resto de páginas */
+}
 
     /* PROJECT SECTION */
     .project-section {

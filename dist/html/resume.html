@@ -12,106 +12,94 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+<style>
+/* ————— BASE (modo claro) ————— */
+body{
+  font-family:'Inter','Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:#fff;
+  color:#444;
+  padding-bottom:3rem;
+}
+/* Navbar */
+.navbar-brand{font-weight:700;font-size:1.8rem}
+.nav-link   {font-size:1.1rem;transition:color .25s}
 
-  <style>
-    /* ——— Base (modo claro) ——— */
-    body {
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ffffff;
-      color: #444;
-      padding-bottom: 3rem;
-    }
-    .navbar-brand { font-weight: 700; font-size: 1.8rem; }
-    .nav-link     { font-size: 1.1rem; }
-    .nav-link:hover { color:#198754; }
+/* ✔︎ COLOR NAV: igual que gallery */
+.navbar-light .navbar-nav .nav-link:hover{color:#198754 !important;}   /* hover */
+.nav-link.active{font-weight:600;color:#198754 !important;}            /* enlace activo */
 
-    h1.section-title{
-      margin:3rem 0 2rem;font-weight:600;font-size:2.2rem;color:#2c3e50;
-      text-align:center;position:relative;width:100%;
-    }
-    h1.section-title::after{
-      content:"";display:block;width:80px;height:2px;background:#ced4da;
-      margin:.5rem auto 0;border-radius:1px;
-    }
-
-    /* Accordion cards */
-    .experience-card{box-shadow:0 4px 10px rgba(0,0,0,.1);
-      border-radius:.5rem;margin-bottom:1.5rem;overflow:hidden;}
-    .experience-header{background:#f8f9fa;cursor:pointer;
-      display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;}
-    .experience-header:hover{background:#e9ecef;}
-    .experience-logo{max-height:60px;max-width:100px;object-fit:contain;}
-    .exp-role-title{font-weight:600;font-size:1.1rem;margin:0;}
-    .exp-role-dates{font-size:.9rem;color:#6c757d;}
-    .exp-description p{text-align:justify;margin-bottom:1rem;}
-    .exp-skills b{display:inline-block;margin-right:1rem;margin-bottom:.5rem;font-weight:600;}
-
-    /* Soft‑skill cards */
-    .soft-skill-card{border:none;box-shadow:0 4px 10px rgba(0,0,0,.08);
-      border-radius:.5rem;overflow:hidden;transition:transform .2s;}
-    .soft-skill-card:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,.12);}
-    .soft-skill-card img{width:100%;height:180px;object-fit:cover;}
-
-    /* ——— BOTÓN toggle ——— */
-    #darkToggleBtn{
-      background:none;border:none;font-size:1.5rem;cursor:pointer;margin-left:1rem;color:#444;
-    }
-
-    /* ——— MODO OSCURO ——— */
-    body.dark-mode{
-      background-color:#121212;color:#e0e0e0;
-    }
-    body.dark-mode .navbar{background:#1f1f1f!important;}
-    body.dark-mode .nav-link,body.dark-mode .navbar-brand{color:#e0e0e0!important;}
-    body.dark-mode .nav-link:hover{color:#00e676!important;}
-    body.dark-mode #darkToggleBtn{color:#e0e0e0;}
-    body.dark-mode h1.section-title{color:#e0e0e0;}
-    body.dark-mode h1.section-title::after{background:#555;}
-    body.dark-mode .experience-card,
-    body.dark-mode .accordion-body{background:#1c1c1c;color:#e0e0e0;}
-    body.dark-mode .experience-header{background:#1f1f1f;}
-    body.dark-mode .experience-header:hover{background:#262626;}
-    body.dark-mode .exp-role-dates{color:#9e9e9e;}
-    body.dark-mode .accordion-button:not(.collapsed){background:#272727;color:#00e676;}
-    body.dark-mode .accordion-button::after{filter:invert(1);}
-    body.dark-mode .soft-skill-card{background:#1c1c1c;}
-    body.dark-mode .section-title + .row .card{background:#1c1c1c;}
-    body.dark-mode footer,
-    body.dark-mode .bg-light{background:#1e1e1e!important;color:#aaa!important;}
-    body.dark-mode a{color:#64ffda;} body.dark-mode a:hover{color:#1de9b6;}
-
-/* En tu CSS, reemplaza el bloque toggle por este */
-#darkToggleBtn,
-#darkToggleBtn i {
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-left: 1rem;
-  color: #444;
+/* Sección títulos */
+h1.section-title{
+  margin:3rem 0 2rem;font-weight:600;font-size:2.2rem;color:#2c3e50;
+  text-align:center;position:relative
+}
+h1.section-title::after{
+  content:"";display:block;width:80px;height:2px;background:#ced4da;
+  margin:.5rem auto 0;border-radius:1px
 }
 
-body.dark-mode #darkToggleBtn,
-body.dark-mode #darkToggleBtn i {
-  color: #e0e0e0;
+/* Tarjetas de experiencia */
+.experience-card{box-shadow:0 4px 10px rgba(0,0,0,.1);border-radius:.5rem;margin-bottom:1.5rem;overflow:hidden}
+.experience-header{background:#f8f9fa;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem}
+.experience-header:hover{background:#e9ecef}
+.experience-logo{max-height:60px;max-width:100px;object-fit:contain}
+.exp-role-title{font-weight:600;font-size:1.1rem;margin:0}
+.exp-role-dates{font-size:.9rem;color:#6c757d}
+.exp-description p{text-align:justify;margin-bottom:1rem}
+.exp-skills b{display:inline-block;margin-right:1rem;margin-bottom:.5rem;font-weight:600}
+
+/* Soft‑skill cards */
+.soft-skill-card{border:none;box-shadow:0 4px 10px rgba(0,0,0,.08);border-radius:.5rem;overflow:hidden;transition:transform .2s}
+.soft-skill-card:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.soft-skill-card img{width:100%;height:180px;object-fit:cover}
+
+/* Botón 🌙/☀️ */
+#darkToggleBtn,#darkToggleBtn i{
+  border:none;background:none;font-size:1.5rem;cursor:pointer;margin-left:1rem;color:#444
 }
 
+/* ————— MODO OSCURO ————— */
+body.dark-mode{background:#121212;color:#e0e0e0}
+body.dark-mode .navbar{background:#1f1f1f!important}
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link{color:#e0e0e0!important}
 
+/* ✔︎ COLOR NAV en dark */
+body.dark-mode .navbar-light .navbar-nav .nav-link:hover{color:#00e676 !important;}  /* hover */
+body.dark-mode .nav-link.active{color:#00e676 !important;}                          /* activo */
 
-/* ── Hamburger: blanco sobre fondo oscuro ────────────── */
-body.dark-mode .navbar-toggler-icon{filter:invert(1);}  /* invierte el SVG */
+body.dark-mode #darkToggleBtn,#darkToggleBtn i{color:#e0e0e0}
 
-/* ── Acordeones: encabezados colapsados en dark‑mode ─── */
+body.dark-mode h1.section-title{color:#e0e0e0}
+body.dark-mode h1.section-title::after{background:#555}
+
+body.dark-mode .experience-card,
+body.dark-mode .accordion-body{background:#1c1c1c;color:#e0e0e0}
+body.dark-mode .experience-header{background:#1f1f1f}
+body.dark-mode .experience-header:hover{background:#262626}
+body.dark-mode .exp-role-dates{color:#9e9e9e}
+
+body.dark-mode .accordion-button:not(.collapsed){background:#272727;color:#00e676}
+body.dark-mode .accordion-button::after{filter:invert(1)}
+
+body.dark-mode .soft-skill-card{background:#1c1c1c}
+body.dark-mode .section-title + .row .card{background:#1c1c1c}
+body.dark-mode footer,
+body.dark-mode .bg-light{background:#1e1e1e!important;color:#aaa!important}
+body.dark-mode a{color:#64ffda}
+body.dark-mode a:hover{color:#1de9b6}
+
+/* Icono hamburguesa blanco en dark */
+body.dark-mode .navbar-toggler-icon{filter:invert(1)}
+
+/* Accordion colapsado en dark */
 body.dark-mode .accordion-button.collapsed{
-  background:#1f1f1f;               /* gris oscuro, NO blanco  */
-  color:#e0e0e0;
-  border-color:#2a2a2a;
+  background:#1f1f1f;color:#e0e0e0;border-color:#2a2a2a
 }
-body.dark-mode .accordion-button.collapsed .exp-role-dates{color:#9e9e9e;}
+body.dark-mode .accordion-button.collapsed .exp-role-dates{color:#9e9e9e}
+</style>
 
-/* (El estilo abierto ya lo tenías: fondo negro + texto verde) */
 
-  </style>
 </head>
 
 <body>
@@ -138,7 +126,7 @@ body.dark-mode .accordion-button.collapsed .exp-role-dates{color:#9e9e9e;}
     <!-- Links -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="resume.html">Experience / Skills</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="resume.html">Experience / Skills</a></li>
         <li class="nav-item"><a class="nav-link" href="gallery.html">Photo Gallery</a></li>
         <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
       </ul>
