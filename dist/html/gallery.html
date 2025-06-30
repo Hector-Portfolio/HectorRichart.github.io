@@ -9,107 +9,135 @@
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
 
   <style>
-    body {
-      background-color: #f9f9f9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #212529;
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-    }
-
-   /* Título principal estilizado y profesional */
-.gallery-title {
-  margin: 3rem 0 1.5rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 2.3rem;
-  color: #2c3e50; /* azul grafito sobrio */
-  position: relative;
+    /* ────────────  BASE (modo claro)  ──────────── */
+    body{background:#f9f9f9;color:#212529;font-family:'Segoe UI',Tahoma,Verdana,sans-serif}
+    .navbar-brand{font-weight:700}
+    /* toggle icon */
+#darkToggleBtn,
+#darkToggleBtn i {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #212529;
 }
+    /* Título */
+    .gallery-title{margin:3rem 0 1.5rem;text-align:center;font-weight:600;font-size:2.3rem;color:#2c3e50;position:relative}
+    .gallery-title::after{content:"";display:block;width:80px;height:2px;background:#adb5bd;margin:.75rem auto 0;border-radius:1px}
 
-/* Línea decorativa bajo el título */
-.gallery-title::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 2px;
-  background: #adb5bd; /* gris neutral */
-  margin: 0.75rem auto 0;
-  border-radius: 1px;
-}
-
-
- .carousel-item img {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;
-  object-fit: contain; /* asegura que se vea todo sin recorte */
-}
+    /* Imágenes carrusel */
+    .carousel-item img{width:100%;height:auto;max-height:70vh;object-fit:contain}
 
     /* Caption */
-    .carousel-caption {
-      background: rgba(0, 0, 0, 0.45);
-      border-radius: .5rem;
-      padding: 1rem 1.25rem;
+    .carousel-caption{background:rgba(0,0,0,.45);border-radius:.5rem;padding:1rem 1.25rem}
+
+    /* XS ajustes */
+    @media (max-width:576px){
+      .carousel-item img{max-height:60vh}
+      .carousel-caption{font-size:.9rem;padding:.75rem 1rem}
     }
 
-   @media (max-width: 576px) {
-  .carousel-item img {
-    max-height: 60vh;
-    object-fit: contain;
-  }
+    /* ────────────  DARK MODE  ──────────── */
+    body.dark-mode{background:#121212;color:#e0e0e0}
+    body.dark-mode .navbar{background:#1f1f1f!important}
+    body.dark-mode .navbar-brand,
+    body.dark-mode .nav-link{color:#e0e0e0!important}
+    body.dark-mode .nav-link:hover{color:#64ffda!important}
+    body.dark-mode #darkToggleBtn,
+body.dark-mode #darkToggleBtn i {
+  color: #e0e0e0;
+}
+    /* hamburger blanco */
+    body.dark-mode .navbar-toggler-icon{filter:invert(1)}
+    /* título */
+    body.dark-mode .gallery-title{color:#e0e0e0}
+    body.dark-mode .gallery-title::after{background:#555}
+    /* indicadores y controles del carrusel */
+    body.dark-mode .carousel-indicators [data-bs-target]{background:#888}
+    body.dark-mode .carousel-control-prev-icon,
+    body.dark-mode .carousel-control-next-icon{filter:invert(1)}
 
-  .carousel-caption {
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
-  }
+    /* ─────────── Controles del carrusel siempre visibles ─────────── */
+
+/* Botón circular semitransparente */
+.carousel-control-prev,
+.carousel-control-next{
+  width: 3rem;
+  height: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 0;
+  opacity: .95;
+  transition: opacity .2s;
+}
+
+/* 👉  MODO CLARO  — fondo oscuro + flecha blanca (default Bootstrap) */
+body:not(.dark-mode) .carousel-control-prev,
+body:not(.dark-mode) .carousel-control-next{
+  background: rgba(0,0,0,.55);
+}
+body:not(.dark-mode) .carousel-control-prev-icon,
+body:not(.dark-mode) .carousel-control-next-icon{
+  /* iconos Bootstrap ya vienen en blanco – solo aseguramos que NO estén invertidos */
+  filter: none;
+}
+
+/* 🌙  MODO OSCURO — fondo claro + flecha negra */
+body.dark-mode .carousel-control-prev,
+body.dark-mode .carousel-control-next{
+  background: rgba(255,255,255,.65);
+}
+/* Invertimos el ícono (de blanco a negro) para que contraste */
+body.dark-mode .carousel-control-prev-icon,
+body.dark-mode .carousel-control-next-icon{
+  filter: invert(1) grayscale(100%);
 }
 
   </style>
 </head>
 
 <body>
-
   <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-  <div class="container">
-    <a class="navbar-brand" href="../.././index.html">Portfolio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="resume.html">Experience / Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="gallery.html">Photo Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="projects.html">Projects</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="../../index.html">Portfolio</a>
 
+      <!-- 🌙 toggle SIEMPRE visible -->
+<button id="darkToggleBtn" title="Toggle dark mode" aria-label="Toggle dark mode" style="border:none; background:none; font-size:1.5rem; cursor:pointer; color:#212529;">
+  <i class="bi bi-moon-fill"></i>
+</button>
+
+      <!-- hamburger -->
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="resume.html">Experience / Skills</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="gallery.html">Photo Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <!-- Título -->
   <h1 class="gallery-title">Get to Know Me Through Photos</h1>
 
   <!-- Carrusel -->
-  <div id="photoCarousel" class="carousel slide mx-auto mb-5" data-bs-ride="carousel" style="max-width: 1000px;">
-    <!-- Indicadores -->
+  <div id="photoCarousel" class="carousel slide mx-auto mb-5" data-bs-ride="carousel" style="max-width:1000px">
+    <!-- indicadores -->
     <div class="carousel-indicators">
-      <!-- Se generan tantos <button> como slides. 0..11 -->
-      <!-- activo en la primera -->
-      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
+      <!-- 12 botones -->
+      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
@@ -123,7 +151,7 @@
       <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="11" aria-label="Slide 12"></button>
     </div>
 
-    <div class="carousel-inner">
+     <div class="carousel-inner">
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <img src="../../images/microsoft_hq.jpg" alt="Microsoft HQ Redmond" />
@@ -221,7 +249,7 @@
       </div>
     </div>
 
-    <!-- Controles izquierda/derecha -->
+    <!-- Controles -->
     <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -232,6 +260,28 @@
     </button>
   </div>
 
-</body>
+  <script>
+  const body = document.body;
+  const btn = document.getElementById('darkToggleBtn');
 
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    btn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  } else {
+    btn.innerHTML = '<i class="bi bi-moon-fill"></i>';
+  }
+
+  btn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      btn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      btn.innerHTML = '<i class="bi bi-moon-fill"></i>';
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>
+
+</body>
 </html>

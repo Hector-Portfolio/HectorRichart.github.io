@@ -4,201 +4,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Work Experience - Héctor Richart</title>
+  <title>Work Experience – Héctor Richart</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-
-  <!-- Google Fonts: Inter -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 
   <style>
+    /* ——— Base (modo claro) ——— */
     body {
       font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff;
+      background-color: #ffffff;
       color: #444;
       padding-bottom: 3rem;
     }
+    .navbar-brand { font-weight: 700; font-size: 1.8rem; }
+    .nav-link     { font-size: 1.1rem; }
+    .nav-link:hover { color:#198754; }
 
-    /* Navbar same style as index */
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.8rem;
+    h1.section-title{
+      margin:3rem 0 2rem;font-weight:600;font-size:2.2rem;color:#2c3e50;
+      text-align:center;position:relative;width:100%;
+    }
+    h1.section-title::after{
+      content:"";display:block;width:80px;height:2px;background:#ced4da;
+      margin:.5rem auto 0;border-radius:1px;
     }
 
-    .nav-link {
-      font-size: 1.1rem;
+    /* Accordion cards */
+    .experience-card{box-shadow:0 4px 10px rgba(0,0,0,.1);
+      border-radius:.5rem;margin-bottom:1.5rem;overflow:hidden;}
+    .experience-header{background:#f8f9fa;cursor:pointer;
+      display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;}
+    .experience-header:hover{background:#e9ecef;}
+    .experience-logo{max-height:60px;max-width:100px;object-fit:contain;}
+    .exp-role-title{font-weight:600;font-size:1.1rem;margin:0;}
+    .exp-role-dates{font-size:.9rem;color:#6c757d;}
+    .exp-description p{text-align:justify;margin-bottom:1rem;}
+    .exp-skills b{display:inline-block;margin-right:1rem;margin-bottom:.5rem;font-weight:600;}
+
+    /* Soft‑skill cards */
+    .soft-skill-card{border:none;box-shadow:0 4px 10px rgba(0,0,0,.08);
+      border-radius:.5rem;overflow:hidden;transition:transform .2s;}
+    .soft-skill-card:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,.12);}
+    .soft-skill-card img{width:100%;height:180px;object-fit:cover;}
+
+    /* ——— BOTÓN toggle ——— */
+    #darkToggleBtn{
+      background:none;border:none;font-size:1.5rem;cursor:pointer;margin-left:1rem;color:#444;
     }
 
-    .nav-link:hover {
-      color: #198754; /* Bootstrap success green */
+    /* ——— MODO OSCURO ——— */
+    body.dark-mode{
+      background-color:#121212;color:#e0e0e0;
     }
+    body.dark-mode .navbar{background:#1f1f1f!important;}
+    body.dark-mode .nav-link,body.dark-mode .navbar-brand{color:#e0e0e0!important;}
+    body.dark-mode .nav-link:hover{color:#00e676!important;}
+    body.dark-mode #darkToggleBtn{color:#e0e0e0;}
+    body.dark-mode h1.section-title{color:#e0e0e0;}
+    body.dark-mode h1.section-title::after{background:#555;}
+    body.dark-mode .experience-card,
+    body.dark-mode .accordion-body{background:#1c1c1c;color:#e0e0e0;}
+    body.dark-mode .experience-header{background:#1f1f1f;}
+    body.dark-mode .experience-header:hover{background:#262626;}
+    body.dark-mode .exp-role-dates{color:#9e9e9e;}
+    body.dark-mode .accordion-button:not(.collapsed){background:#272727;color:#00e676;}
+    body.dark-mode .accordion-button::after{filter:invert(1);}
+    body.dark-mode .soft-skill-card{background:#1c1c1c;}
+    body.dark-mode .section-title + .row .card{background:#1c1c1c;}
+    body.dark-mode footer,
+    body.dark-mode .bg-light{background:#1e1e1e!important;color:#aaa!important;}
+    body.dark-mode a{color:#64ffda;} body.dark-mode a:hover{color:#1de9b6;}
 
-    /* Section title – totally centered */
-    h1.section-title {
-      margin: 3rem 0 2rem;
-      font-weight: 600;
-      font-size: 2.2rem;
-      color: #2c3e50;
-      text-align: center;
-      position: relative;
-      width: 100%;
-      display: block;
-    }
+/* En tu CSS, reemplaza el bloque toggle por este */
+#darkToggleBtn,
+#darkToggleBtn i {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  color: #444;
+}
 
-    h1.section-title::after {
-      content: "";
-      display: block;
-      width: 80px;
-      height: 2px;
-      background: #ced4da;
-      margin: 0.5rem auto 0;
-      border-radius: 1px;
-    }
+body.dark-mode #darkToggleBtn,
+body.dark-mode #darkToggleBtn i {
+  color: #e0e0e0;
+}
 
-    /* Experience Accordion Cards */
-    .experience-card {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 0.5rem;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-    }
 
-    .experience-header {
-      background-color: #f8f9fa;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.5rem;
-    }
 
-    .experience-header:hover {
-      background-color: #e9ecef;
-    }
+/* ── Hamburger: blanco sobre fondo oscuro ────────────── */
+body.dark-mode .navbar-toggler-icon{filter:invert(1);}  /* invierte el SVG */
 
-    .experience-logo {
-      max-height: 60px;
-      max-width: 100px;
-      object-fit: contain;
-    }
+/* ── Acordeones: encabezados colapsados en dark‑mode ─── */
+body.dark-mode .accordion-button.collapsed{
+  background:#1f1f1f;               /* gris oscuro, NO blanco  */
+  color:#e0e0e0;
+  border-color:#2a2a2a;
+}
+body.dark-mode .accordion-button.collapsed .exp-role-dates{color:#9e9e9e;}
 
-    .experience-title {
-      flex-grow: 1;
-    }
+/* (El estilo abierto ya lo tenías: fondo negro + texto verde) */
 
-    .exp-role-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin: 0;
-    }
-
-    .exp-role-dates {
-      font-size: 0.9rem;
-      color: #6c757d;
-    }
-
-    .accordion-button::after {
-      margin-left: auto;
-    }
-
-    .exp-description p {
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
-
-    .exp-skills b {
-      display: inline-block;
-      margin-right: 1rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    /* Soft Skills Cards */
-    .soft-skill-card {
-      border: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      border-radius: 0.5rem;
-      overflow: hidden;
-      transition: transform 0.2s ease;
-      cursor: default;
-    }
-
-    .soft-skill-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    .soft-skill-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="../.././index.html">Portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="resume.html">Experience / Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="gallery.html">Photo Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="projects.html">Projects</a>
-          </li>
-        </ul>
-      </div>
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand" href="../../index.html">Portfolio</a>
+
+   <!-- Botón toggle en navbar -->
+<button id="darkToggleBtn" title="Toggle dark mode" aria-label="Toggle dark mode" style="font-size:1.5rem; border:none; background:none; cursor:pointer; margin-left:1rem; color:#444;">
+  <i class="bi bi-moon-fill"></i>
+</button>
+
+
+    <!-- Hamburger -->
+    <button class="navbar-toggler ms-auto" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="resume.html">Experience / Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Photo Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <main class="container my-5">
     <h1 class="section-title">Work Experience</h1>
 
     <div class="accordion" id="experienceAccordion">
 
-      <!-- Inventec -->
+      <!-- ‥‥‥‑‑‑‑‑‑‑‑‑‑‑ Inventec ‑‑‑‑‑‑‑‑‑‑‥‥‥ -->
       <div class="experience-card accordion-item">
         <h2 class="accordion-header" id="headingInventec">
-          <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseInventec" aria-expanded="false" aria-controls="collapseInventec">
-            <img src="../../images/inventec_logo.png" alt="Inventec Logo" class="experience-logo" />
+          <button class="accordion-button collapsed d-flex align-items-center" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#collapseInventec"
+                  aria-expanded="false" aria-controls="collapseInventec">
+            <img src="../../images/inventec_logo.png" class="experience-logo" alt="Inventec Logo">
             <div class="experience-title ms-3">
               <p class="exp-role-title mb-0">Operations Technology Engineer</p>
-              <small class="exp-role-dates">Jan 2024 - Present</small>
+              <small class="exp-role-dates">Jan 2024 – Present</small>
             </div>
           </button>
         </h2>
-        <div id="collapseInventec" class="accordion-collapse collapse" aria-labelledby="headingInventec"
-          data-bs-parent="#experienceAccordion">
+        <div id="collapseInventec" class="accordion-collapse collapse"
+             data-bs-parent="#experienceAccordion" aria-labelledby="headingInventec">
           <div class="accordion-body">
             <div class="exp-description">
               <p>
-                Lead the design, development, and maintenance of dynamic Power BI dashboards by integrating and modeling data sourced from SQL databases to drive actionable business insights. Develop and support C# web applications built on MVC and ASP.NET frameworks, ensuring robust and scalable solutions aligned with operational requirements.
+                Lead the design, development, and maintenance of dynamic Power BI dashboards by integrating and
+                modeling data from SQL sources to drive actionable insights. Build and support C# web apps
+                on MVC/ASP.NET, delivering robust, scalable tooling for manufacturing operations.
               </p>
             </div>
-            <div class="exp-skills">
-              <b>C# MVC</b>
-              <b>SQL</b>
-              <b>PowerBI</b>
-              <b>DAX Code</b>
-              <b>PowerQuery</b>
-              <b>Data Analysis</b>
-            </div>
+            <div class="exp-skills"><b>C# MVC</b><b>SQL</b><b>Power BI</b><b>DAX</b><b>Power Query</b><b>Data Analysis</b></div>
           </div>
         </div>
       </div>
@@ -485,45 +462,44 @@
 
     </div>
 
-    <!-- Soft Skills Section -->
+   <!-- Soft Skills -->
     <h1 class="section-title">Soft Skills</h1>
-
     <div class="row g-4">
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/bilingual.jpg" alt="Bilingual" />
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/proactive.png" alt="Proactive" />
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/fast-learn.jpg" alt="Fast Learner" />
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/teamwork.png" alt="Teamwork" />
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/time-manag.webp" alt="Time Management" />
-        </div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="card soft-skill-card">
-          <img src="../../images/leadership.jpg" alt="Leadership" />
-        </div>
-      </div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/bilingual.jpg" alt="Bilingual"></div></div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/proactive.png" alt="Proactive"></div></div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/fast-learn.jpg" alt="Fast Learner"></div></div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/teamwork.png" alt="Teamwork"></div></div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/time-manag.webp" alt="Time Management"></div></div>
+      <div class="col-6 col-md-3"><div class="card soft-skill-card"><img src="../../images/leadership.jpg" alt="Leadership"></div></div>
     </div>
   </main>
 
-  <!-- Bootstrap JS Bundle (includes Popper; needed for mobile navbar and accordion) -->
+  <!-- Bootstrap + Toggle script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+ <!-- Al final del body, reemplaza tu script toggle por este -->
+<script>
+  const body = document.body;
+  const btn = document.getElementById('darkToggleBtn');
 
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+    btn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  } else {
+    btn.innerHTML = '<i class="bi bi-moon-fill"></i>';
+  }
+
+  btn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      btn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      btn.innerHTML = '<i class="bi bi-moon-fill"></i>';
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>
+
+
+</body>
 </html>
