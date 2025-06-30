@@ -21,14 +21,27 @@
       font-weight: 700;
     }
 
-    /* Título principal */
-    .gallery-title {
-      margin: 3rem 0 1rem;
-      text-align: center;
-      font-weight: 700;
-      font-size: 2.5rem;
-      color: #0d6efd;
-    }
+   /* Título principal estilizado y profesional */
+.gallery-title {
+  margin: 3rem 0 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.3rem;
+  color: #2c3e50; /* azul grafito sobrio */
+  position: relative;
+}
+
+/* Línea decorativa bajo el título */
+.gallery-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: #adb5bd; /* gris neutral */
+  margin: 0.75rem auto 0;
+  border-radius: 1px;
+}
+
 
     /* Carrusel */
     .carousel-item img {
