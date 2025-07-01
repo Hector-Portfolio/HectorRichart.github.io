@@ -381,7 +381,40 @@ body.dark-mode .btn-outline-primary:hover {
   opacity: 1;
   transform: translateY(0);
 }
-  </style>
+
+/* ===========================================================
+   CUSTOM FIXES — chips de skills siempre coloreados
+   =========================================================== */
+.exp-skills b{
+  background: var(--primary-gradient) !important;
+  color:#fff !important;
+  border:none !important;
+  transform: translateY(0) !important;      /* quita el viejo lift */
+  transition: transform .25s ease;
+}
+.exp-skills b:hover{
+  transform: scale(1.08);                   /* efecto “pop” */
+}
+
+/* Dark‑mode */
+body.dark-mode .exp-skills b{
+  background: var(--accent-green) !important;
+  color:#1a1a2e !important;
+}
+body.dark-mode .exp-skills b:hover{
+  transform: scale(1.08);
+}
+
+/* Texto claro dentro de los acordeones en dark‑mode */
+body.dark-mode .accordion-body,
+body.dark-mode .accordion-body p{
+  color:#e0e0e0 !important;
+}
+body.dark-mode .accordion-body a{
+  color: var(--accent-green);
+}
+</style>
+
 </head>
 
 <body>
