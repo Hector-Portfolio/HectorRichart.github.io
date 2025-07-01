@@ -149,16 +149,7 @@ body {
 .projects-section {
   padding: 6rem 0;
   position: relative;
-}
-
-.projects-section {
-  padding: 6rem 0;
-  position: relative;
-  padding-top: 80px; /* Add this line - adjust if your navbar is taller */
-}
-
-.projects-title {
-  margin-top: 80px; /* Add this line */
+  padding-top: 80px;
 }
 
 .projects-title {
@@ -289,10 +280,11 @@ body {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 1rem;
   right: 10%;
   left: 10%;
   bottom: 20px;
+  font-size: 0.9rem;
 }
 
 /* Footer */
@@ -378,6 +370,14 @@ body.dark-mode .btn-outline-primary:hover {
     width: 40px;
     height: 40px;
   }
+
+  .carousel-caption {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    bottom: 10px;
+    left: 5%;
+    right: 5%;
+  }
 }
 
 /* Scroll animations */
@@ -399,11 +399,11 @@ body.dark-mode .btn-outline-primary:hover {
   background: var(--primary-gradient) !important;
   color:#fff !important;
   border:none !important;
-  transform: translateY(0) !important;      /* quita el viejo lift */
+  transform: translateY(0) !important;
   transition: transform .25s ease;
 }
 .exp-skills b:hover{
-  transform: scale(1.08);                   /* efecto “pop” */
+  transform: scale(1.08);
 }
 
 /* Dark‑mode */
@@ -426,17 +426,14 @@ body.dark-mode .accordion-body a{
 
 /* ===== Hamburguesa visible en dark‑mode ===== */
 body.dark-mode .navbar-toggler {
-  border-color: rgba(255,255,255,0.7);        /* borde clarito */
+  border-color: rgba(255,255,255,0.7);
 }
 
 body.dark-mode .navbar-toggler-icon {
-  /* SVG de 3 líneas blancas */
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' viewBox='0 0 16 16'%3e%3cpath d='M2 2h12M2 8h12M2 14h12'/%3e%3c/svg%3e");
-  filter: none;                               /* anula filtros heredados */
+  filter: none;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -486,25 +483,25 @@ body.dark-mode .navbar-toggler-icon {
                 <div class="carousel-item active">
                   <img src="../../images/fitcult_project/landing.png" class="d-block w-100" alt="FitCult landing page" />
                   <div class="carousel-caption">
-                    <p>Landing page with options to sign in, sign up, and learn why FitCult is the right fitness choice.</p>
+                    <p>Landing page with sign-in/sign-up options and value proposition.</p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="../../images/fitcult_project/registration_and_payment.png" class="d-block w-100" alt="Registration and payment" />
                   <div class="carousel-caption">
-                    <p>After signing up, users can enter card details and view payment summary to complete registration.</p>
+                    <p>Secure registration and payment processing flow.</p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="../../images/fitcult_project/goal_tracking.png" class="d-block w-100" alt="Goal tracking" />
                   <div class="carousel-caption">
-                    <p>Dashboard showing today's workout, weekly progress, hydration goal, and live weather widget.</p>
+                    <p>Personalized dashboard with workout tracking and progress metrics.</p>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="../../images/fitcult_project/dev_team.png" class="d-block w-100" alt="Developer team section" />
                   <div class="carousel-caption">
-                    <p>"About Us" section to discover more about the development team and project background.</p>
+                    <p>Development team showcase and project background.</p>
                   </div>
                 </div>
               </div>
@@ -559,31 +556,21 @@ body.dark-mode .navbar-toggler-icon {
             <div id="naiveCarousel" class="carousel slide project-carousel" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="../../images/naive/landing.png" class="d-block w-100" alt="NAÏVE landing" />
+                  <img src="../../images/naive/landing.png" class="d-block w-100" alt="NAÏVE landing" style="height: 380px; object-fit: cover;" />
                   <div class="carousel-caption">
-                    <p>Once the application is executed the analyst will see the screen below. On the screen, the analyst will have two options:
-                      <br>Analyst can type a project name and select a rollup to create a new project
-                      <br>Analyst can select a saved project and type initials to resume a previous project
-                    </p>
+                    <p>Initial screen for project creation or selection.</p>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="../../images/naive/cyberva.png" class="d-block w-100" alt="CyberVA dashboard" />
+                  <img src="../../images/naive/cyberva.png" class="d-block w-100" alt="CyberVA dashboard" style="height: 380px; object-fit: cover;" />
                   <div class="carousel-caption">
-                    <p>Dashboard to display Network Map, TAK Map, Pivot Map and network statistics.
-                      <br>At the left-hand side, analyst can access the two different dashboards.
-                      <br>CyberVA Dashboard will display all Nodes that are available from the INVA/DE rollup.
-                      <br>To access click on the blue View button.
-                    </p>
+                    <p>CyberVA dashboard displaying network topology and analytics.</p>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="../../images/naive/assesment.png" class="d-block w-100" alt="Assessment dashboard" />
+                  <img src="../../images/naive/assesment.png" class="d-block w-100" alt="Assessment dashboard" style="height: 380px; object-fit: cover;" />
                   <div class="carousel-caption">
-                    <p>Dashboard to display network vulnerability and Environmental information.
-                      <br>If there are any errors during the selection of the use case, the system shall show an error on a pop-up window and end the process.
-                      <br>To access click on the blue View button.
-                    </p>
+                    <p>Vulnerability assessment and environmental data visualization.</p>
                   </div>
                 </div>
               </div>
