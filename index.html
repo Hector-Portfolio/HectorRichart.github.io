@@ -1,276 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Héctor Richart – Full-stack developer & data-driven manufacturing specialist." />
-  <title>Héctor Richart · Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <!-- Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" />
+<title>Héctor Richart · Retro Arcade Portfolio</title>
 
-  <style>
+<!-- Pixel Font -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+<style>
 :root {
-  --primary: #0078d4;
-  --accent: #16a34a;
-  --bg-light: #f8fafc;
-  --bg-panel: #ffffff;
-  --text-dark: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --bg: #0b0f17;
+  --panel: #121826;
+  --primary: #9bff8d;
+  --accent: #5dd0ff;
+  --glitch: #e078ff;
+  --text: #9bff8d;
+  --radius: 12px;
 }
 
-/* Base */
+/* GLOBAL */
 body {
-  background: var(--bg-light);
-  font-family: 'Inter', sans-serif;
-  color: var(--text-dark);
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Press Start 2P", monospace;
+  cursor: url('https://i.imgur.com/63ZQF4H.png'), auto;
   overflow-x: hidden;
 }
 
-/* Navbar */
-.navbar {
-  background: #ffffffcc !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+/* CRT lines */
+body::before {
+  content:"";
+  position: fixed;
+  inset:0;
+  pointer-events:none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05) 0px,
+    rgba(0,0,0,0) 2px
+  );
+  z-index:999;
 }
-.navbar-brand {
-  font-family: 'Fira Code', monospace;
-  color: var(--primary) !important;
-  font-weight: 700;
+
+/* INTRO */
+#introOverlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--primary);
+  font-size: 1.3rem;
+  z-index: 20000;
+}
+.intro-sub { margin-top: 10px; font-size: 0.7rem; opacity: 0.8; }
+.fadeOut { animation: fadeIntro 0.8s forwards; }
+@keyframes fadeIntro { to { opacity: 0; visibility: hidden; } }
+
+/* NAV */
+.navbar {
+  background:#000;
+  border-bottom: 3px solid var(--primary);
+  box-shadow: 0 0 12px var(--primary);
 }
 .nav-link {
-  color: var(--text-dark) !important;
-  font-weight: 500;
+  color: var(--text) !important;
+  font-size: 0.7rem;
+}
+.nav-link:hover {
+  color: var(--accent) !important;
+  text-shadow: 0 0 12px var(--accent);
+}
+
+/* GLITCH TITLE (arreglado, sin doble texto feo) */
+.glitch {
   position: relative;
+  color: transparent; /* ocultar texto base */
+  display: inline-block;
 }
-.nav-link::after {
-  content: '';
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transform: translateX(-50%);
-  transition: all 0.3s;
+  left: 0;
+  top: 0;
+  color: var(--text);
 }
-.nav-link:hover::after { width: 100%; }
+.glitch::before {
+  text-shadow: -2px 0 var(--glitch);
+  animation: glitchAnim 2s infinite;
+}
+.glitch::after {
+  text-shadow: 2px 0 var(--accent);
+  animation: glitchAnim 3s infinite;
+}
+@keyframes glitchAnim {
+  0%   { clip-path: inset(0 0 80% 0); }
+  20%  { clip-path: inset(10% 0 60% 0); }
+  40%  { clip-path: inset(20% 0 40% 0); }
+  60%  { clip-path: inset(30% 0 20% 0); }
+  80%  { clip-path: inset(10% 0 50% 0); }
+  100% { clip-path: inset(0 0 80% 0); }
+}
 
 /* HERO */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 95vh;
-  background: linear-gradient(145deg, #eef2f7 0%, #ffffff 60%);
-  padding: 4rem 2rem;
+  padding: 9rem 2rem 5rem;
+  text-align: center;
 }
-.hero-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4rem;
-  max-width: 1150px;
-  width: 100%;
+.hero-title {
+  font-size: 1.1rem;
 }
 .hero-photo img {
-  width: 330px;
-  height: 330px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid var(--primary);
-  box-shadow: var(--shadow);
+  width: 240px;
+  border: 4px solid var(--accent);
+  border-radius: 10px;
+  margin-top: 2rem;
+  box-shadow: 0 0 18px var(--accent);
 }
-.hero-terminal {
-  flex: 1 1 500px;
-  background: var(--bg-panel);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  padding: 2rem;
-  font-family: 'Fira Code', monospace;
-  font-size: 1.1rem;
-  border: 1px solid var(--border);
-  position: relative;
-}
-.hero-terminal::before {
-  content: '● ● ●';
-  color: #9ca3af;
-  position: absolute;
-  top: 12px;
-  left: 16px;
-  letter-spacing: 4px;
-}
-.prompt { color: var(--primary); }
-.output { color: var(--accent); display: block; margin-top: 0.5rem; }
-.cursor { color: var(--primary); animation: blink 1s infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.hero-subtext {
-  margin-top: 1rem;
-  color: var(--text-muted);
-  font-size: 1rem;
-}
-.hero-btn {
-  margin-top: 1.5rem;
-  background: var(--primary);
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border-radius: 50px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s;
-}
-.hero-btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
-/* ABOUT */
-#about {
-  padding: 6rem 0;
-  background: #f1f5f9;
-}
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 1100px;
+/* SECTIONS & PANELS */
+section { padding: 5rem 2rem; }
+.panel {
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  padding: 2rem;
+  max-width: 900px;
   margin: auto;
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  box-shadow: 0 0 14px var(--accent);
 }
-.code-box {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 2rem;
-  font-family: 'Fira Code', monospace;
-  box-shadow: var(--shadow);
-  color: #334155;
-}
-.code-box .keyword { color: #c18401; }
-.code-box .string { color: #10b981; }
-.code-box .class { color: #9333ea; }
-.code-box .property { color: #2563eb; }
-.code-box .comment { color: #9ca3af; font-style: italic; }
 
-.skills-panel {
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  padding: 2rem;
-}
-.skills-panel h3 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-.skill-chip {
-  display: inline-block;
-  background: #e0f2fe;
-  color: #0369a1;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-weight: 500;
-  margin: 0.3rem;
-  font-size: 0.95rem;
+/* SKILLS */
+.skill-badge {
+  display:inline-block;
+  padding:0.6rem 1rem;
+  background: var(--glitch);
+  color:black;
+  margin:0.3rem;
+  border-radius:10px;
+  font-size:0.7rem;
+  box-shadow: 0 0 12px var(--glitch);
 }
 
 /* CONTACT */
-#contact {
-  background: #ffffff;
-  padding: 6rem 0;
-}
-.contact-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
 .contact-card {
-  flex: 1 1 300px;
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 2.5rem;
-  text-align: center;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  background: var(--panel);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 3px solid var(--primary);
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 0 14px var(--primary);
 }
-.contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+input, textarea {
+  background: #000 !important;
+  border: 2px solid var(--primary) !important;
+  color: var(--primary) !important;
+  font-size: 0.7rem;
 }
-.contact-card i {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-.contact-card h4 {
-  color: var(--primary);
-  font-weight: 600;
-}
-.contact-card a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-}
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+button {
+  background: var(--glitch);
+  border: none;
+  padding: 1rem;
+  width: 100%;
   margin-top: 1rem;
+  font-size: 0.8rem;
+  box-shadow: 0 0 12px var(--glitch);
 }
-.socials a {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #e0f2fe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-.socials a:hover {
-  background: var(--primary);
-}
-.socials a img {
-  width: 24px;
-  filter: invert(0.2);
-}
-.socials a:hover img {
+
+/* SOCIAL ICONS */
+.socials img {
+  width: 28px;
+  height: 28px;
   filter: invert(1);
+}
+
+/* LOADING BAR */
+#loadingBar {
+  display:none;
+  width: 260px;
+  background: #000;
+  border: 3px solid var(--accent);
+  padding: 8px;
+  color: var(--accent);
+  margin: auto;
+  margin-bottom: 1rem;
+  text-align:center;
+  font-size: 0.7rem;
+}
+
+/* SUCCESS TOAST */
+.toast-success {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: rgba(155,255,140,0.12);
+  border: 3px solid var(--primary);
+  padding: 1rem 2rem;
+  color: var(--primary);
+  display:none;
+  font-size: 0.8rem;
+}
+
+/* SETTINGS BUTTON */
+#settingsBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: #000;
+  color: var(--accent);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow: 0 0 12px var(--accent);
+  cursor: pointer;
+  z-index: 15000;
+}
+
+/* THEME MENU OVERLAY (PAUSE MENU) */
+#themeMenuOverlay {
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,0.85);
+  display:none;
+  justify-content: center;
+  align-items: center;
+  z-index: 16000;
+}
+.theme-menu {
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+  padding: 2rem;
+  border-radius: var(--radius);
+  text-align:center;
+  min-width: 260px;
+}
+.theme-menu h3 {
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.theme-option {
+  margin:0.4rem 0;
+  font-size:0.7rem;
+  cursor:pointer;
+}
+.theme-option.active {
+  color: var(--glitch);
+  text-shadow: 0 0 10px var(--glitch);
+}
+.theme-close {
+  margin-top:1.5rem;
+  font-size:0.7rem;
+  cursor:pointer;
+  color: var(--accent);
 }
 
 /* FOOTER */
 footer {
-  background: #f1f5f9;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border);
-  font-size: 0.95rem;
+  text-align:center;
+  margin: 3rem 0 2rem;
+  font-size:0.7rem;
+  color: var(--accent);
 }
-footer p span { color: var(--primary); font-weight: 600; }
+</style>
 
-@media (max-width: 992px) {
-  .hero-container { flex-direction: column; text-align: center; }
-  .about-container { grid-template-columns: 1fr; }
-}
-  </style>
+<!-- SOUNDS -->
+<audio id="sndHover" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1126.mp3"></audio>
+<audio id="sndSend" src="https://assets.mixkit.co/sfx/preview/mixkit-video-game-power-up-3164.mp3"></audio>
+<audio id="sndMenu" src="https://assets.mixkit.co/sfx/preview/mixkit-retro-game-notification-212.mp3"></audio>
+
 </head>
-
 <body>
+
+<!-- INTRO -->
+<div id="introOverlay">
+  <div>PRESS ANY KEY</div>
+  <div class="intro-sub">TO START</div>
+</div>
+
+<!-- SETTINGS BUTTON -->
+<div id="settingsBtn" title="Settings (P)">
+  <i class="bi bi-gear-fill"></i>
+</div>
+
+<!-- THEME MENU (PAUSE) -->
+<div id="themeMenuOverlay">
+  <div class="theme-menu">
+    <h3>THEME SETTINGS</h3>
+    <div class="theme-option" data-theme="arcade">> Arcade (Default)</div>
+    <div class="theme-option" data-theme="gameboy">> Game Boy</div>
+    <div class="theme-option" data-theme="nes">> NES</div>
+    <div class="theme-option" data-theme="sega">> SEGA</div>
+    <div class="theme-close">Press ESC or click here to close</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-lg">
-    <a class="navbar-brand" href="index.html">Héctor Richart</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">H. RICHART</a>
+    <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="dist/html/resume.html">Experience</a></li>
         <li class="nav-item"><a class="nav-link" href="dist/html/gallery.html">Gallery</a></li>
@@ -280,86 +326,212 @@ footer p span { color: var(--primary); font-weight: 600; }
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-container">
-    <div class="hero-photo">
-      <img src="images/Japan/ryokan.jpeg" alt="Profile photo" />
-    </div>
-    <div class="hero-terminal">
-      <span class="prompt">&gt; hector.richart@portfolio:~$</span> whoami
-      <span class="output">Héctor Richart — Full-Stack Developer & Data Engineer</span>
-      <span class="cursor">█</span>
-      <p class="hero-subtext">
-        Crafting intelligent manufacturing systems through code, data & design.
-      </p>
-      <a href="#contact" class="hero-btn"><i class="bi bi-envelope"></i> Let's Connect</a>
-    </div>
+  <h1 class="glitch hero-title" data-text="FULL-STACK DEV / DATA ENGINEER">
+    FULL-STACK DEV / DATA ENGINEER
+  </h1>
+  <div class="hero-photo">
+    <img src="images/Japan/ryokan.jpeg" alt="Profile picture">
   </div>
 </section>
 
-<section id="about">
-  <div class="about-container">
-    <div class="code-box">
-<span class="comment">// AboutMe.js</span><br>
-<span class="keyword">class</span> <span class="class">HectorRichart</span> {<br>
-&nbsp;&nbsp;<span class="keyword">constructor</span>() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">this</span>.location = <span class="string">'Ciudad Juárez, MX'</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">this</span>.email = <span class="string">'hector_richart@outlook.com'</span>;<br>
-&nbsp;&nbsp;}<br><br>
-&nbsp;&nbsp;experience() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> [<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">'2024-now'</span>: <span class="string">'Software Developer · Inventec'</span>},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">'2023-24'</span>: <span class="string">'IT Engineer · Columbus Ind.'</span>},<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<span class="string">'2022'</span>: <span class="string">'SWE Intern · Microsoft'</span>}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;];<br>
-&nbsp;&nbsp;}<br><br>
-&nbsp;&nbsp;skills() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> [<span class="string">'SQL'</span>, <span class="string">'C# / .NET'</span>, <span class="string">'Power BI'</span>, <span class="string">'React'</span>, <span class="string">'Python'</span>, <span class="string">'Web Development'</span>];<br>
-&nbsp;&nbsp;}<br>
-}
-    </div>
-
-    <div class="skills-panel">
-      <h3>Core Skills</h3>
-      <div>
-        <span class="skill-chip">SQL / Data Modeling</span>
-        <span class="skill-chip">C# / .NET Core</span>
-        <span class="skill-chip">Power BI Dashboards</span>
-        <span class="skill-chip">React / TypeScript</span>
-        <span class="skill-chip">Python Automation</span>
-        <span class="skill-chip">Manufacturing Systems</span>
-        <span class="skill-chip">Data Visualization</span>
-        <span class="skill-chip">Web Development</span>
-      </div>
-    </div>
+<!-- ABOUT -->
+<section>
+  <h2 class="text-center">ABOUT ME</h2>
+  <div class="panel">
+    I’m Héctor, a developer from Ciudad Juárez building systems that feel like cheat codes:
+    automation, dashboards, manufacturing intelligence, AI-assisted tools, and full-stack engineering.
   </div>
 </section>
 
+<!-- SKILLS -->
+<section>
+  <h2 class="text-center">SKILLS</h2>
+  <div class="panel text-center">
+    <span class="skill-badge">SQL</span>
+    <span class="skill-badge">C# / .NET</span>
+    <span class="skill-badge">Python</span>
+    <span class="skill-badge">React</span>
+    <span class="skill-badge">Power BI</span>
+    <span class="skill-badge">Automation</span>
+    <span class="skill-badge">ML Basics</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
-  <div class="contact-row">
-    <div class="contact-card">
-      <i class="bi bi-file-earmark-text"></i>
-      <h4>Download Résumé</h4>
-      <p class="text-muted">Get a PDF with full details about my experience and projects.</p>
-      <a href="assets/hector_richart_resume.pdf" download>Download PDF</a>
-    </div>
-    <div class="contact-card">
-      <i class="bi bi-person-lines-fill"></i>
-      <h4>Get in Touch</h4>
-      <p class="text-muted">Let's connect and discuss data-driven solutions or collaborations.</p>
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/hector-richart/" target="_blank"><img src="images/linkedin.png" alt="LinkedIn"></a>
-        <a href="https://github.com/HectorRichart" target="_blank"><img src="images/github_logo.png" alt="GitHub"></a>
-      </div>
-      <p>📧 <strong>richartruizhectorrodrigo@gmail.com</strong></p>
+  <h2 class="text-center">CONTACT</h2>
+  <div class="contact-card">
+
+    <div id="loadingBar">▓▓▓░░░░░ LOADING...</div>
+
+    <form id="contactForm">
+      <label>Your Name</label>
+      <input type="text" name="from_name" class="form-control" required>
+
+      <label class="mt-3">Your Email</label>
+      <input type="email" name="reply_to" class="form-control" required>
+
+      <label class="mt-3">Message</label>
+      <textarea name="message" class="form-control" rows="4" required></textarea>
+
+      <button type="submit">SEND</button>
+    </form>
+
+    <div class="socials mt-4 d-flex justify-content-center gap-3">
+      <a href="https://www.linkedin.com/in/hector-richart/" target="_blank">
+        <img src="images/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/HectorRichart" target="_blank">
+        <img src="images/github_logo.png" alt="GitHub">
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 <span>Héctor Richart</span> — Designed with ☕ & clean commits</p>
+  © 2025 Héctor Richart — READY PLAYER ONE
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SUCCESS TOAST -->
+<div id="successToast" class="toast-success">✔ MESSAGE SENT!</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+/* INTRO */
+const intro = document.getElementById("introOverlay");
+document.addEventListener("keydown", () => intro.classList.add("fadeOut"));
+
+/* EmailJS */
+emailjs.init("hzW9G7iKUaLNrL7-e");
+
+const toast   = document.getElementById("successToast");
+const loading = document.getElementById("loadingBar");
+
+const sndHover = document.getElementById("sndHover");
+const sndSend  = document.getElementById("sndSend");
+const sndMenu  = document.getElementById("sndMenu");
+
+/* Hover sound on any button */
+document.addEventListener("mouseover", e => {
+  if (e.target.tagName === "BUTTON" || e.target.id === "settingsBtn") {
+    sndHover.currentTime = 0;
+    sndHover.play();
+  }
+});
+
+/* Send email */
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  loading.style.display = "block";
+  sndSend.currentTime = 0;
+  sndSend.play();
+
+  emailjs.sendForm("service_4qba6e1", "template_3257f2r", this)
+  .then(() => {
+    loading.style.display = "none";
+    toast.style.display = "block";
+    setTimeout(() => toast.style.display = "none", 4000);
+    this.reset();
+  });
+});
+
+/* THEME SYSTEM */
+const themes = {
+  arcade: {
+    '--bg': '#0b0f17',
+    '--panel': '#121826',
+    '--primary': '#9bff8d',
+    '--accent': '#5dd0ff',
+    '--glitch': '#e078ff',
+    '--text': '#9bff8d'
+  },
+  gameboy: {
+    '--bg': '#0f380f',
+    '--panel': '#224422',
+    '--primary': '#8bac0f',
+    '--accent': '#9bbc0f',
+    '--glitch': '#c4de82',
+    '--text': '#e2f3ae'
+  },
+  nes: {
+    '--bg': '#1a1c2c',
+    '--panel': '#2b2f4a',
+    '--primary': '#c6c6c6',
+    '--accent': '#5d68e2',
+    '--glitch': '#ff4f4f',
+    '--text': '#f5f5f5'
+  },
+  sega: {
+    '--bg': '#05060b',
+    '--panel': '#151824',
+    '--primary': '#ffe600',
+    '--accent': '#0f9bff',
+    '--glitch': '#ffd54a',
+    '--text': '#f8f8f8'
+  }
+};
+
+let currentTheme = 'arcade';
+
+function applyTheme(name) {
+  const vars = themes[name];
+  if (!vars) return;
+  Object.entries(vars).forEach(([k,v]) => {
+    document.documentElement.style.setProperty(k, v);
+  });
+  currentTheme = name;
+  updateThemeMenuActive();
+}
+
+function updateThemeMenuActive() {
+  document.querySelectorAll('.theme-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.theme === currentTheme);
+  });
+}
+
+/* THEME MENU LOGIC */
+const themeOverlay = document.getElementById("themeMenuOverlay");
+const settingsBtn  = document.getElementById("settingsBtn");
+
+function openThemeMenu() {
+  themeOverlay.style.display = "flex";
+  sndMenu.currentTime = 0;
+  sndMenu.play();
+  updateThemeMenuActive();
+}
+function closeThemeMenu() {
+  themeOverlay.style.display = "none";
+}
+
+settingsBtn.addEventListener("click", openThemeMenu);
+
+themeOverlay.addEventListener("click", e => {
+  if (e.target.classList.contains('theme-close') || e.target === themeOverlay) {
+    closeThemeMenu();
+  }
+});
+
+document.querySelectorAll('.theme-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const theme = opt.dataset.theme;
+    applyTheme(theme);
+  });
+});
+
+/* Keyboard shortcuts: P to open, ESC to close */
+document.addEventListener("keydown", e => {
+  if (e.key === 'p' || e.key === 'P') openThemeMenu();
+  if (e.key === 'Escape') closeThemeMenu();
+});
+
+/* Start with Arcade theme applied explicitly */
+applyTheme('arcade');
+</script>
+
 </body>
 </html>
