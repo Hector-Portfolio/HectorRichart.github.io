@@ -3,229 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-        content="Professional resume and experience of Héctor Richart - Software Engineer">
-  <title>Work Experience – Héctor Richart</title>
+  <meta name="description" content="Professional experience of Héctor Richart – Software Engineer" />
+  <title>Experience · Héctor Richart</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <!-- Icons & Fonts -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" />
 
   <style>
 :root {
-  --bg-dark: #0d1117;
-  --bg-panel: #161b22;
-  --text-primary: #c9d1d9;
-  --text-secondary: #9ba1a6;
-  --accent-cyan: #00bcd4;
-  --accent-orange: #ff9800;
-  --border-light: rgba(255,255,255,0.1);
-  --shadow-glow: 0 0 25px rgba(0,188,212,0.3);
+  --primary: #0078d4;
+  --accent: #16a34a;
+  --bg-light: #f8fafc;
+  --bg-panel: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Base */
-* { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-primary);
-  scroll-behavior: smooth;
-  line-height: 1.6;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  overflow-x: hidden;
 }
 
 /* Navbar */
 .navbar {
-  background: rgba(22,27,34,0.95) !important;
+  background: #ffffffcc !important;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border);
 }
 .navbar-brand {
   font-family: 'Fira Code', monospace;
+  color: var(--primary) !important;
   font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--accent-cyan) !important;
-  text-decoration: none;
 }
-.navbar-nav .nav-link {
-  color: var(--text-primary) !important;
-  margin: 0 0.5rem;
-  position: relative;
+.nav-link {
+  color: var(--text-dark) !important;
   font-weight: 500;
-  transition: all 0.3s ease;
+  position: relative;
 }
-.navbar-nav .nav-link::after {
-  content:'';
-  position:absolute; bottom:0; left:50%;
-  width:0; height:2px;
-  background: var(--accent-cyan);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
   transform: translateX(-50%);
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after {
-  width:100%;
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
 }
 
-/* Section / page layout */
-.resume-section {
-  padding-top: 7rem;  /* push below navbar */
-  padding-bottom: 4rem;
+/* Section */
+section.experience-section {
+  padding: 7rem 0 5rem;
 }
 .section-title {
-  text-align:center;
-  font-family:'Fira Code', monospace;
-  font-weight:600;
-  color:var(--accent-cyan);
-  margin-bottom:3rem;
-  text-shadow:0 0 10px rgba(0,188,212,0.4);
-  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+  color: var(--primary);
+  margin-bottom: 3rem;
+  font-weight: 600;
 }
 
-/* Accordion cards */
-.experience-card {
+/* Experience Cards Grid */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.exp-card {
   background: var(--bg-panel);
-  border:1px solid var(--border-light);
-  border-radius:12px;
-  box-shadow: var(--shadow-glow);
-  margin-bottom:1.5rem;
-  overflow:hidden;
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.experience-card:hover { transform:translateY(-3px); }
-
-.accordion-button {
-  background:rgba(255,255,255,0.03);
-  color:var(--text-primary);
-  font-weight:500;
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  border:none;
-  padding:1.3rem 1.5rem;
-  width:100%;
-  text-align:left;
+.exp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-.accordion-button::after {
-  filter: brightness(4) invert(1); /* caret visible on dark */
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
-.accordion-button:not(.collapsed) {
-  background:rgba(0,188,212,0.15);
-  color:var(--accent-cyan);
-  box-shadow:none;
+.exp-header img {
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: #f1f5f9;
+  padding: 0.3rem;
 }
-
-.experience-logo {
-  max-width:90px;
-  max-height:55px;
-  object-fit:contain;
-  border-radius:6px;
-  background:rgba(255,255,255,0.05);
-  padding:0.3rem;
+.exp-header h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
-.exp-role-title {
-  font-weight:600;
-  margin:0;
-  color: var(--text-primary);
+.exp-header small {
+  color: var(--text-muted);
 }
-.exp-role-dates {
-  color:var(--text-secondary);
-  font-size:0.9rem;
-  margin:0.2rem 0 0 0;
+.exp-card p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-top: 0.5rem;
+  line-height: 1.6;
 }
-
-.accordion-body {
-  background:rgba(255,255,255,0.02);
-  color:var(--text-primary);
-  padding:1.5rem 2rem;
-  border-top:1px solid var(--border-light);
-}
-.accordion-body p {
-  margin-bottom:1rem;
-  line-height:1.7;
-  color:var(--text-primary);
-}
-.accordion-body a {
-  color:var(--accent-cyan);
-  text-decoration:none;
-}
-.accordion-body a:hover { opacity:0.8; }
-
-/* Skill chips */
 .exp-skills {
-  margin-top:1rem;
+  margin-top: 1rem;
 }
-.exp-skills b {
-  display:inline-block;
-  margin:0.4rem;
-  padding:0.4rem 1rem;
-  border-radius:50px;
-  font-size:0.8rem;
-  background:rgba(255,255,255,0.05);
-  border:1px solid var(--border-light);
-  color:var(--text-primary);
-  transition: all 0.25s ease;
-}
-.exp-skills b:hover {
-  background:var(--accent-cyan);
-  color:#0d1117;
-  border-color:transparent;
-  box-shadow:0 0 16px rgba(0,188,212,0.6);
+.exp-skills span {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 50px;
+  font-weight: 500;
 }
 
 /* Soft Skills */
-.soft-skill-card {
-  background:var(--bg-panel);
-  border:1px solid var(--border-light);
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:var(--shadow-glow);
-  transition: transform 0.3s ease;
-  height:100%;
+.soft-skills {
+  margin-top: 4rem;
 }
-.soft-skill-card:hover { transform:translateY(-4px) scale(1.02); }
-.soft-skill-card img {
-  width:100%;
-  height:180px;
-  object-fit:cover;
+.soft-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
-.soft-skill-card .card-body {
-  text-align:center;
-  padding:1rem 0 1.25rem;
+.soft-card {
+  background: var(--bg-panel);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
 }
-.soft-skill-card h5 {
-  color:var(--accent-orange);
-  font-size:1rem;
-  margin:0;
+.soft-card:hover {
+  transform: translateY(-4px);
+}
+.soft-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.soft-card h5 {
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 /* Footer */
 footer {
-  background:#0b0f14;
-  color:#dce3ec;
-  text-align:center;
-  padding:2rem 0;
-  border-top:1px solid var(--border-light);
-  text-shadow:0 0 6px rgba(0,188,212,0.25);
-  font-size:0.95rem;
+  background: #f1f5f9;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
 }
-footer p:hover {
-  color:var(--accent-cyan);
-  text-shadow:0 0 10px rgba(0,188,212,0.5);
+footer p span {
+  color: var(--primary);
+  font-weight: 600;
 }
 
-/* Responsive tweaks */
-@media(max-width:768px){
-  .accordion-button {
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .experience-logo {
-    max-width:80px;
+@media (max-width: 768px) {
+  .exp-header img {
+    width: 55px;
+    height: 55px;
   }
 }
   </style>
@@ -235,14 +199,10 @@ footer p:hover {
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-lg">
-      <a class="navbar-brand" href="../../index.html">hector.richart</a>
-
-      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-              aria-label="Toggle navigation">
+      <a class="navbar-brand" href="../../index.html">Héctor Richart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link active" href="resume.html">Experience</a></li>
@@ -253,395 +213,144 @@ footer p:hover {
     </div>
   </nav>
 
-  <!-- Resume Section -->
-  <section class="resume-section">
+  <!-- Experience Section -->
+  <section class="experience-section">
     <div class="container-lg">
+      <h1 class="section-title">Professional Experience</h1>
 
-      <h1 class="section-title">Professional Journey</h1>
+      <div class="exp-grid">
 
-      <div class="accordion" id="experienceAccordion">
-        <!-- Inventec -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingInventec">
-            <button class="accordion-button collapsed" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#collapseInventec"
-                    aria-expanded="false" aria-controls="collapseInventec">
-              <img src="../../images/inventec_logo.png" class="experience-logo" alt="Inventec Logo">
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Operations Technology Engineer</p>
-                <small class="exp-role-dates">Jan 2024 – Present</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseInventec" class="accordion-collapse collapse"
-               data-bs-parent="#experienceAccordion" aria-labelledby="headingInventec">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Lead the design, development, and maintenance of dynamic Power BI dashboards by integrating and
-                  modeling data from SQL sources to drive actionable insights. Build and support C# web apps
-                  on MVC/ASP.NET, delivering robust, scalable tooling for manufacturing operations.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>C# MVC</b><b>SQL</b><b>Power BI</b><b>DAX</b><b>Power Query</b><b>Data Analysis</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/inventec_logo.png" alt="Inventec Logo">
+            <div>
+              <h5>Software Developer · Inventec</h5>
+              <small>Jun 2024 – Present</small>
             </div>
+          </div>
+          <p>
+            Develop data-driven factory tools using SQL, Power BI, and C# . NET Core to support production analysis and reporting. 
+            Design datasets, dashboards, and web applications aligned with manufacturing needs.
+          </p>
+          <div class="exp-skills">
+            <span>SQL</span><span>Power BI</span><span>C# /.NET</span><span>Data Modeling</span><span>Power Query</span>
           </div>
         </div>
 
-        <!-- Colind -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingColind">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseColind" aria-expanded="false" aria-controls="collapseColind">
-              <img src="../../images/colind.webp" alt="Colind Company Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">IT Engineer / Programmer</p>
-                <small class="exp-role-dates">Aug 2023 - May 2024</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseColind" class="accordion-collapse collapse" aria-labelledby="headingColind"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Provided comprehensive technical support across three manufacturing plants in Juarez,
-                  including supervision of third-party service providers. Served as AS400 system administrator,
-                  managing system configurations and maintenance. Oversaw software license administration
-                  and contributed to the development of Power BI reports. Supported IT hardware including Zebra
-                  printers and scanners, ensuring minimal downtime and operational continuity.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>IBM AS400</b>
-                <b>System Administration</b>
-                <b>Software License Administration</b>
-                <b>Technical Support</b>
-                <b>Server Administration</b>
-                <b>Supervision</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/colind.webp" alt="Colind Logo">
+            <div>
+              <h5>IT Engineer / Programmer · Columbus Ind.</h5>
+              <small>Aug 2023 – May 2024</small>
             </div>
+          </div>
+          <p>
+            Provided hardware and software support across three plants, managed AS400 configurations, and developed Power BI reports. 
+            Ensured uptime of scanners, Zebra printers, and other manufacturing equipment.
+          </p>
+          <div class="exp-skills">
+            <span>AS400</span><span>System Admin</span><span>Power BI</span><span>Technical Support</span>
           </div>
         </div>
 
-        <!-- UTEP Webmaster -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingUtepWebmaster">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseUtepWebmaster" aria-expanded="false" aria-controls="collapseUtepWebmaster">
-              <img src="../../images/utep_logo.png" alt="UTEP Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Webmaster</p>
-                <small class="exp-role-dates">Sep 2022 - May 2023</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseUtepWebmaster" class="accordion-collapse collapse" aria-labelledby="headingUtepWebmaster"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Managed and updated web pages across multiple university departments, ensuring content accuracy
-                  and usability. Collaborated closely with various stakeholders to develop new pages tailored to
-                  departmental requirements, maintaining consistency with institutional branding and accessibility
-                  standards.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>HTML</b>
-                <b>CSS</b>
-                <b>Cascade CMS</b>
-                <b>Agile Methodologies</b>
-                <b>JavaScript</b>
-                <b>Teamwork</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/utep_logo.png" alt="UTEP Logo">
+            <div>
+              <h5>Webmaster · UTEP</h5>
+              <small>Sep 2022 – May 2023</small>
             </div>
+          </div>
+          <p>
+            Updated and maintained department webpages ensuring branding and accessibility compliance. 
+            Delivered new designs and features based on stakeholder requirements.
+          </p>
+          <div class="exp-skills">
+            <span>HTML / CSS</span><span>JavaScript</span><span>CMS</span><span>Accessibility</span>
           </div>
         </div>
 
-        <!-- Microsoft Software Engineer Intern -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingMicrosoftSEIntern">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseMicrosoftSEIntern" aria-expanded="false" aria-controls="collapseMicrosoftSEIntern">
-              <img src="../../images/microsoft_logo.jpg" alt="Microsoft Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Software Engineer Intern</p>
-                <small class="exp-role-dates">May 2022 - August 2022</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseMicrosoftSEIntern" class="accordion-collapse collapse" aria-labelledby="headingMicrosoftSEIntern"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Developed an engaging front-end mini-game integrated into the Bing Shopping platform, utilizing
-                  React with TypeScript (TSX) to enhance user retention and interaction. Collaborated within an
-                  Agile team to ensure timely delivery and alignment with user experience goals.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>React TSX</b>
-                <b>HTML</b>
-                <b>CSS</b>
-                <b>Agile Methodologies</b>
-                <b>TypeScript</b>
-                <b>Teamwork</b>
-                <b>Web Debugging</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/microsoft_logo.jpg" alt="Microsoft Logo">
+            <div>
+              <h5>Software Engineer Intern · Microsoft</h5>
+              <small>May 2022 – Aug 2022</small>
             </div>
+          </div>
+          <p>
+            Built a React + TypeScript mini-game for Bing Shopping to boost user engagement. 
+            Collaborated within an Agile team focused on UX-driven development.
+          </p>
+          <div class="exp-skills">
+            <span>React TSX</span><span>TypeScript</span><span>Agile</span><span>UI/UX</span>
           </div>
         </div>
 
-        <!-- Microsoft Explore Intern -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingMicrosoftExplore">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseMicrosoftExplore" aria-expanded="false" aria-controls="collapseMicrosoftExplore">
-              <img src="../../images/microsoft_logo.jpg" alt="Microsoft Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Explore Intern</p>
-                <small class="exp-role-dates">May 2021 - August 2021</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseMicrosoftExplore" class="accordion-collapse collapse" aria-labelledby="headingMicrosoftExplore"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Collaborated in a team to develop a full-stack barcode scanning application that aggregates product
-                  pricing across multiple retailers. Implemented geolocation features to calculate distances from the
-                  user to each store, enabling informed purchasing decisions. Utilized modern web technologies to
-                  deliver a seamless and responsive user experience.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>React TSX</b>
-                <b>HTML</b>
-                <b>CSS</b>
-                <b>Agile Methodologies</b>
-                <b>TypeScript</b>
-                <b>Teamwork</b>
-                <b>Web Debugging</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/microsoft_logo.jpg" alt="Microsoft Logo">
+            <div>
+              <h5>Explore Intern · Microsoft</h5>
+              <small>May 2021 – Aug 2021</small>
             </div>
+          </div>
+          <p>
+            Co-developed a full-stack barcode scanner app with live retailer price comparison and geolocation. 
+            Implemented modern front-end with React and API integration.
+          </p>
+          <div class="exp-skills">
+            <span>React</span><span>APIs</span><span>Agile</span><span>Web Dev</span>
           </div>
         </div>
 
-        <!-- UTEP Technical Support -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingUtepTechSupport">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseUtepTechSupport" aria-expanded="false" aria-controls="collapseUtepTechSupport">
-              <img src="../../images/utep_logo.png" alt="UTEP Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Technical Support</p>
-                <small class="exp-role-dates">Jan 2021 - Sep 2021</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseUtepTechSupport" class="accordion-collapse collapse" aria-labelledby="headingUtepTechSupport"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Delivered technical support services including software installation, troubleshooting,
-                  and hardware repair to students, faculty, and staff across the university campus.
-                  Ensured prompt resolution of issues to minimize disruption and maintain operational efficiency.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>Teamwork</b>
-                <b>Software Installation</b>
-                <b>Troubleshooting</b>
-                <b>Debugging</b>
-                <b>Hardware Repair</b>
-              </div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <img src="../../images/utep_logo.png" alt="UTEP Logo">
+            <div>
+              <h5>Research Assistant · UTEP</h5>
+              <small>Mar 2020 – May 2022</small>
             </div>
+          </div>
+          <p>
+            Built Python tools enhancing sequence alignment accuracy through secondary-structure data. 
+            Published research findings in bioRxiv.
+          </p>
+          <div class="exp-skills">
+            <span>Python</span><span>Bioinformatics</span><span>Linux</span><span>Research</span>
           </div>
         </div>
 
-        <!-- UTEP Research Assistant -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingUtepResearch">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseUtepResearch" aria-expanded="false" aria-controls="collapseUtepResearch">
-              <img src="../../images/utep_logo.png" alt="UTEP Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Research Assistant</p>
-                <small class="exp-role-dates">March 2020 – May 2022</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseUtepResearch" class="accordion-collapse collapse" aria-labelledby="headingUtepResearch"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Developed a Python-based computational tool that enhances the accuracy of multiple-sequence
-                  alignments by incorporating secondary-structure information. Presented preliminary findings at
-                  a university research symposium, contributing to advancing methodologies in bioinformatics.
-                  <a href="https://www.biorxiv.org/content/biorxiv/early/2023/02/03/2022.05.22.493004.full.pdf" target="_blank" rel="noopener noreferrer">Click here to read the work</a>.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>Python Programming</b>
-                <b>Linux Command Line</b>
-                <b>Linux Server</b>
-                <b>Self-Study</b>
-                <b>Teamwork</b>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CS Tutor -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingCsTutor">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseCsTutor" aria-expanded="false" aria-controls="collapseCsTutor">
-              <img src="../../images/cs_tutor.jpg" alt="CS Tutor Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">CS Tutor</p>
-                <small class="exp-role-dates">Dec 2019 - Mar 2020</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseCsTutor" class="accordion-collapse collapse" aria-labelledby="headingCsTutor"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Designed and delivered introductory computer science lessons to a young learner, covering
-                  foundational programming concepts such as variables, loops, methods, and arithmetic operations.
-                  Adapted teaching methods to foster engagement and comprehension for beginners.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>Java Programming</b>
-                <b>Teaching</b>
-                <b>Lesson Preparation</b>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- UTEP Student Building Supervisor -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingUtepSupervisor">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseUtepSupervisor" aria-expanded="false" aria-controls="collapseUtepSupervisor">
-              <img src="../../images/utep_logo.png" alt="UTEP Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">Student Building Supervisor</p>
-                <small class="exp-role-dates">Mar 2019 - Jun 2019</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseUtepSupervisor" class="accordion-collapse collapse" aria-labelledby="headingUtepSupervisor"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Managed audiovisual support services for event spaces across three campus buildings,
-                  ensuring seamless operation during scheduled activities. Oversaw logistical and safety
-                  protocols, making operational decisions and verifying secure closure of facilities at day's end.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>Audiovisual Support</b>
-                <b>Supervision</b>
-                <b>Building Management</b>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SAT -->
-        <div class="experience-card accordion-item">
-          <h2 class="accordion-header" id="headingSat">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseSat" aria-expanded="false" aria-controls="collapseSat">
-              <img src="../../images/sat_logo.png" alt="SAT Logo" class="experience-logo" />
-              <div class="experience-title">
-                <p class="exp-role-title mb-0">SAT (Mexico's tax authority)</p>
-                <small class="exp-role-dates">Jan 2018 - Jun 2018</small>
-              </div>
-            </button>
-          </h2>
-          <div id="collapseSat" class="accordion-collapse collapse" aria-labelledby="headingSat"
-            data-bs-parent="#experienceAccordion">
-            <div class="accordion-body">
-              <div class="exp-description">
-                <p>
-                  Provided frontline IT support to agency employees, including computer reimaging and resolution
-                  of hardware and software issues. Maintained high service levels to support uninterrupted workflow
-                  within the organization.
-                </p>
-              </div>
-              <div class="exp-skills">
-                <b>Technical Support</b>
-                <b>Computer Installation</b>
-                <b>Teamwork</b>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Soft Skills -->
-      <h1 class="section-title">Soft Skills</h1>
-      <div class="row g-4">
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/bilingual.jpg" alt="Bilingual" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Bilingual</h5>
-            </div>
+      <div class="soft-skills">
+        <h1 class="section-title">Soft Skills</h1>
+        <div class="soft-skills-grid">
+          <div class="soft-card">
+            <img src="../../images/bilingual.jpg" alt="Bilingual">
+            <h5>Bilingual</h5>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/proactive.png" alt="Proactive" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Proactive</h5>
-            </div>
+          <div class="soft-card">
+            <img src="../../images/proactive.png" alt="Proactive">
+            <h5>Proactive</h5>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/fast-learn.jpg" alt="Fast Learner" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Fast Learner</h5>
-            </div>
+          <div class="soft-card">
+            <img src="../../images/fast-learn.jpg" alt="Fast Learner">
+            <h5>Fast Learner</h5>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/teamwork.png" alt="Teamwork" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Teamwork</h5>
-            </div>
+          <div class="soft-card">
+            <img src="../../images/teamwork.png" alt="Teamwork">
+            <h5>Teamwork</h5>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/time-manag.webp" alt="Time Management" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Time Management</h5>
-            </div>
+          <div class="soft-card">
+            <img src="../../images/time-manag.webp" alt="Time Management">
+            <h5>Time Management</h5>
           </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card soft-skill-card h-100">
-            <img src="../../images/leadership.jpg" alt="Leadership" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Leadership</h5>
-            </div>
+          <div class="soft-card">
+            <img src="../../images/leadership.jpg" alt="Leadership">
+            <h5>Leadership</h5>
           </div>
         </div>
       </div>
@@ -649,14 +358,10 @@ footer p:hover {
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <div class="container-lg">
-      <p class="mb-0">© 2025 Héctor Richart — Crafted with ❤️ and lots of ☕</p>
-    </div>
+    <p>© 2025 <span>Héctor Richart</span> — Crafted with ☕ and clean code</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

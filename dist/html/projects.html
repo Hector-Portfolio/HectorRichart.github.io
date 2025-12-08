@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Projects by Héctor Richart - showcasing professional and academic work.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Projects by Héctor Richart - showcasing professional and academic work." />
   <title>Projects – Héctor Richart</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <!-- Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" />
 
   <style>
 :root {
-  --bg-dark: #0d1117;
-  --bg-panel: #161b22;
-  --text-primary: #c9d1d9;
-  --text-secondary: #9ba1a6;
-  --accent-cyan: #00bcd4;
-  --accent-green: #00e676;
-  --border-light: rgba(255,255,255,0.1);
-  --shadow-glow: 0 0 25px rgba(0,188,212,0.25);
+  --primary: #0078d4;
+  --accent: #16a34a;
+  --bg-light: #f8fafc;
+  --bg-panel: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* Base */
-* {margin:0; padding:0; box-sizing:border-box;}
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-primary);
+  background: var(--bg-light);
+  color: var(--text-dark);
   scroll-behavior: smooth;
   line-height: 1.6;
 }
 
 /* Navbar */
 .navbar {
-  background: rgba(22,27,34,0.95) !important;
+  background: #ffffffcc !important;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border);
 }
 .navbar-brand {
   font-family: 'Fira Code', monospace;
+  color: var(--primary) !important;
   font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--accent-cyan) !important;
-  text-decoration: none;
 }
-.navbar-nav .nav-link {
-  color: var(--text-primary) !important;
-  margin: 0 0.5rem;
+.nav-link {
+  color: var(--text-dark) !important;
   font-weight: 500;
   position: relative;
-  transition: all 0.3s ease;
 }
-.navbar-nav .nav-link::after {
-  content:'';
-  position:absolute;
-  bottom:0; left:50%;
-  width:0; height:2px;
-  background: var(--accent-cyan);
-  transform:translateX(-50%);
-  transition:all 0.3s ease;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transform: translateX(-50%);
+  transition: all 0.3s;
 }
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after {width:100%;}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
 
 /* Projects Section */
 .projects-section {
@@ -72,12 +71,11 @@ body {
   padding-bottom: 4rem;
 }
 .projects-title {
-  text-align:center;
-  font-family:'Fira Code', monospace;
-  font-weight:600;
-  color:var(--accent-cyan);
-  margin-bottom:3rem;
-  text-shadow:0 0 10px rgba(0,188,212,0.4);
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 3rem;
   font-size: clamp(1.8rem, 2vw, 2.4rem);
 }
 
@@ -85,75 +83,78 @@ body {
 .project-card {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-glow);
-  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
   background: var(--bg-panel);
   margin-bottom: 3rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,188,212,0.3);
+  box-shadow: 0 10px 30px rgba(0, 120, 212, 0.15);
 }
 .project-carousel img {
   width: 100%;
   height: 380px;
   object-fit: cover;
+  border-bottom: 1px solid var(--border);
 }
 .project-content {
   padding: 2rem;
 }
 .project-name {
-  font-weight:700;
-  font-size:1.5rem;
-  color:var(--accent-cyan);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
 }
 .project-meta {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 .project-description {
-  margin-top:1rem;
-  margin-bottom:1.5rem;
-  font-size:0.95rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
 }
 
-/* Tech badges */
+/* Tech Badges */
 .badge-tech {
-  background: var(--accent-cyan);
-  color: #0d1117;
+  background: #e0f2fe;
+  color: #0369a1;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin-right: 0.4rem;
   margin-bottom: 0.5rem;
-  padding: 0.5rem 0.8rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 50px;
   display: inline-block;
+  transition: all 0.25s ease;
 }
 .badge-tech:hover {
-  background: var(--accent-green);
+  background: var(--primary);
+  color: #ffffff;
   transform: scale(1.05);
-  transition: all 0.25s ease;
 }
 
 /* Buttons */
 .btn-outline-primary {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
+  border-color: var(--primary);
+  color: var(--primary);
   transition: all 0.3s ease;
 }
 .btn-outline-primary:hover {
-  background: var(--accent-cyan);
-  color: #0d1117;
+  background: var(--primary);
+  color: white;
 }
 
-/* Carousel controls */
+/* Carousel Controls */
 .carousel-control-prev,
 .carousel-control-next {
   width: 50px;
   height: 50px;
-  background: rgba(0,188,212,0.1);
-  border: 1px solid var(--accent-cyan);
+  background: rgba(0, 120, 212, 0.1);
+  border: 1px solid var(--primary);
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
@@ -162,42 +163,56 @@ body {
 }
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background: rgba(0,188,212,0.25);
+  background: rgba(0, 120, 212, 0.2);
   transform: translateY(-50%) scale(1.1);
 }
+
+/* Carousel Caption */
 .carousel-caption {
-  background: rgba(13,17,23,0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: var(--text-dark);
   font-size: 0.9rem;
-  color: var(--text-primary);
+  line-height: 1.5;
+  box-shadow: var(--shadow);
 }
 
 /* Footer */
 footer {
-  background:#0b0f14;
-  color:#dce3ec;
-  text-align:center;
-  padding:2rem 0;
-  border-top:1px solid var(--border-light);
-  text-shadow:0 0 6px rgba(0,188,212,0.25);
+  background: #f1f5f9;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
 }
-footer p:hover {
-  color:var(--accent-cyan);
-  text-shadow:0 0 10px rgba(0,188,212,0.5);
+footer p span {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* Responsive */
-@media (max-width:768px){
-  .project-carousel img { height: 280px; }
-  .carousel-caption { font-size:0.8rem; padding:0.5rem; }
-  .project-content { padding:1.5rem; }
+@media (max-width: 768px) {
+  .project-carousel img {
+    height: 260px;
+  }
+  .project-content {
+    padding: 1.5rem;
+  }
 }
 
 /* Scroll Animations */
-.fade-in {opacity:0; transform:translateY(30px); transition:all 0.8s ease;}
-.fade-in.visible {opacity:1; transform:translateY(0);}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
 </head>
 
@@ -205,10 +220,8 @@ footer p:hover {
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-lg">
-      <a class="navbar-brand" href="../../index.html">hector.richart</a>
-      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-              aria-label="Toggle navigation">
+      <a class="navbar-brand" href="../../index.html">Héctor Richart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -233,20 +246,16 @@ footer p:hover {
             <div id="fitcultCarousel" class="carousel slide project-carousel" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="../../images/fitcult_project/landing.png" alt="FitCult landing">
+                  <img src="../../images/fitcult_project/landing.png" alt="FitCult landing" />
                   <div class="carousel-caption"><p>Landing page with sign-in/sign-up options and value proposition.</p></div>
                 </div>
                 <div class="carousel-item">
-                  <img src="../../images/fitcult_project/registration_and_payment.png" alt="Registration and payment">
-                  <div class="carousel-caption"><p>Secure registration and payment processing flow.</p></div>
+                  <img src="../../images/fitcult_project/registration_and_payment.png" alt="Registration and payment" />
+                  <div class="carousel-caption"><p>Secure registration and payment flow with Firebase backend.</p></div>
                 </div>
                 <div class="carousel-item">
-                  <img src="../../images/fitcult_project/goal_tracking.png" alt="Goal tracking">
-                  <div class="carousel-caption"><p>Personalized dashboard with workout tracking and progress metrics.</p></div>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../images/fitcult_project/dev_team.png" alt="Dev team">
-                  <div class="carousel-caption"><p>Development team showcase and project background.</p></div>
+                  <img src="../../images/fitcult_project/goal_tracking.png" alt="Goal tracking" />
+                  <div class="carousel-caption"><p>Dashboard tracking user goals and workout progress metrics.</p></div>
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#fitcultCarousel" data-bs-slide="prev">
@@ -262,9 +271,9 @@ footer p:hover {
               <h3 class="project-name">FitCult</h3>
               <span class="project-meta">School Project | May 2023</span>
               <p class="project-description">
-                Web app built by a team of five using weekly Agile sprints.<br>
-                Role: full-stack developer & scrum facilitator.  
-                Lets users track metrics, goals, and upload progress photos using Firebase NoSQL.
+                Full-stack fitness tracking app developed with Agile sprints.  
+                Role: Full-stack dev & scrum facilitator.  
+                Tracks metrics, goals, and uploads progress photos using Firebase NoSQL.
               </p>
               <div>
                 <span class="badge-tech">HTML5</span>
@@ -285,16 +294,12 @@ footer p:hover {
             <div id="naiveCarousel" class="carousel slide project-carousel" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="../../images/naive/landing.png" alt="NAÏVE landing">
-                  <div class="carousel-caption"><p>Initial screen for project creation or selection.</p></div>
+                  <img src="../../images/naive/landing.png" alt="NAÏVE landing" />
+                  <div class="carousel-caption"><p>Home interface for project creation and management.</p></div>
                 </div>
                 <div class="carousel-item">
-                  <img src="../../images/naive/cyberva.png" alt="CyberVA dashboard">
-                  <div class="carousel-caption"><p>CyberVA dashboard displaying network topology and analytics.</p></div>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../images/naive/assesment.png" alt="Assessment dashboard">
-                  <div class="carousel-caption"><p>Vulnerability assessment and data visualization.</p></div>
+                  <img src="../../images/naive/cyberva.png" alt="CyberVA dashboard" />
+                  <div class="carousel-caption"><p>CyberVA dashboard visualizing network vulnerabilities.</p></div>
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#naiveCarousel" data-bs-slide="prev">
@@ -310,9 +315,8 @@ footer p:hover {
               <h3 class="project-name">NAÏVE</h3>
               <span class="project-meta">School Project | May 2023</span>
               <p class="project-description">
-                Full-stack web app for cybersecurity analysts.  
-                Runs on Kali Linux or cloud (AWS/Azure).  
-                Aggregates and visualizes penetration-testing data in real time.
+                Web-based tool for cybersecurity analysts, running locally or on cloud servers.  
+                Aggregates penetration-testing data and visualizes analytics in real time.
               </p>
               <div>
                 <span class="badge-tech">Python</span>
@@ -328,8 +332,8 @@ footer p:hover {
       <!-- MSA Research -->
       <div class="project-card fade-in">
         <div class="row g-0">
-          <div class="col-md-7 d-flex align-items-center justify-content-center" style="background:rgba(0,0,0,0.2);">
-            <img src="../../images/couri_poster.png" alt="COURI Poster" class="img-fluid" style="max-height:380px;object-fit:contain;">
+          <div class="col-md-7 d-flex align-items-center justify-content-center" style="background: #f9fafb;">
+            <img src="../../images/couri_poster.png" alt="COURI Poster" class="img-fluid" style="max-height: 380px; object-fit: contain;">
           </div>
           <div class="col-md-5">
             <div class="project-content">
@@ -337,8 +341,8 @@ footer p:hover {
               <span class="project-meta">Undergrad Research | Sep 2022</span>
               <p class="project-description">
                 Independent research under Dr. Daniel DeBlasio.  
-                Improved MSA accuracy using Python scripts that incorporate DSSP-based structural data.  
-                Results presented and later published in bioRxiv.
+                Enhanced MSA accuracy using Python and structural data integration.  
+                Published on bioRxiv after university presentation.
               </p>
               <div>
                 <span class="badge-tech">Python</span>
@@ -358,9 +362,7 @@ footer p:hover {
 
   <!-- Footer -->
   <footer>
-    <div class="container-lg">
-      <p class="mb-0">© 2025 Héctor Richart — Crafted with ❤️ and lots of ☕</p>
-    </div>
+    <p>© 2025 <span>Héctor Richart</span> — Crafted with ☕ and clean code</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
