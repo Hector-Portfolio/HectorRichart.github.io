@@ -279,6 +279,65 @@ footer {
   font-size:0.7rem;
   color: var(--accent);
 }
+
+/* HAMBURGER BUTTON */
+#retroHamburger {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+
+.hamb-line {
+  width: 26px;
+  height: 3px;
+  background: var(--primary);
+  box-shadow: 0 0 6px var(--primary);
+}
+
+/* MOBILE MENU OVERLAY */
+#mobileMenuOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 12000;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu-box {
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 80%;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.mobile-link {
+  display: block;
+  margin: 1rem 0;
+  font-size: 0.7rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+.mobile-link:hover {
+  color: var(--glitch);
+  text-shadow: 0 0 10px var(--glitch);
+}
+
+.mobile-close {
+  margin-top: 1.5rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
 </style>
 
 <!-- SOUNDS -->
@@ -316,7 +375,16 @@ footer {
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">H. RICHART</a>
-    <div class="collapse navbar-collapse justify-content-end">
+
+    <!-- HAMBURGER BUTTON (visible solo en móvil) -->
+    <button class="navbar-toggler" id="retroHamburger" type="button">
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+    </button>
+
+    <!-- DESKTOP MENU -->
+    <div class="collapse navbar-collapse justify-content-end d-none d-lg-flex">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="dist/html/resume.html">Experience</a></li>
         <li class="nav-item"><a class="nav-link" href="dist/html/gallery.html">Gallery</a></li>
@@ -325,6 +393,17 @@ footer {
     </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobileMenuOverlay">
+  <div class="mobile-menu-box">
+    <a href="dist/html/resume.html" class="mobile-link">> Experience</a>
+    <a href="dist/html/gallery.html" class="mobile-link">> Gallery</a>
+    <a href="dist/html/projects.html" class="mobile-link">> Projects</a>
+    <div class="mobile-close">CLOSE (ESC)</div>
+  </div>
+</div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -528,6 +607,27 @@ document.addEventListener("keydown", e => {
   if (e.key === 'p' || e.key === 'P') openThemeMenu();
   if (e.key === 'Escape') closeThemeMenu();
 });
+
+/* MOBILE MENU LOGIC */
+const hamb = document.getElementById("retroHamburger");
+const mobileMenu = document.getElementById("mobileMenuOverlay");
+
+hamb.addEventListener("click", () => {
+  mobileMenu.style.display = "flex";
+  sndMenu.currentTime = 0;
+  sndMenu.play();
+});
+
+mobileMenu.addEventListener("click", (e) => {
+  if (e.target === mobileMenu || e.target.classList.contains("mobile-close")) {
+    mobileMenu.style.display = "none";
+  }
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") mobileMenu.style.display = "none";
+});
+
 
 /* Start with Arcade theme applied explicitly */
 applyTheme('arcade');
