@@ -4,353 +4,1027 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Projects by Héctor Richart - showcasing professional and academic work." />
-  <title>Projects – Héctor Richart</title>
+  <title>Projects · Héctor Richart</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <!-- Icons & Fonts -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" />
 
   <style>
-:root {
-  --primary: #0078d4;
-  --accent: #16a34a;
-  --bg-light: #f8fafc;
-  --bg-panel: #ffffff;
-  --text-dark: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #161618;
+      --bg-card-hover: #1a1a1d;
+      --border: #2a2a2e;
+      --border-hover: #3a3a40;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #22d3ee;
+      --accent-dim: rgba(34, 211, 238, 0.1);
+      --accent-secondary: #a78bfa;
+      --accent-tertiary: #4ade80;
+      --gradient-1: linear-gradient(135deg, #22d3ee 0%, #a78bfa 100%);
+      --gradient-2: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+      --gradient-3: linear-gradient(135deg, #4ade80 0%, #22d3ee 100%);
+      --font-display: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-/* Base */
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  scroll-behavior: smooth;
-  line-height: 1.6;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Navbar */
-.navbar {
-  background: #ffffffcc !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.navbar-brand {
-  font-family: 'Fira Code', monospace;
-  color: var(--primary) !important;
-  font-weight: 700;
-}
-.nav-link {
-  color: var(--text-dark) !important;
-  font-weight: 500;
-  position: relative;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transform: translateX(-50%);
-  transition: all 0.3s;
-}
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* Projects Section */
-.projects-section {
-  padding-top: 7rem;
-  padding-bottom: 4rem;
-}
-.projects-title {
-  text-align: center;
-  font-family: 'Fira Code', monospace;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 3rem;
-  font-size: clamp(1.8rem, 2vw, 2.4rem);
-}
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* Project Cards */
-.project-card {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  background: var(--bg-panel);
-  margin-bottom: 3rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 120, 212, 0.15);
-}
-.project-carousel img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-bottom: 1px solid var(--border);
-}
-.project-content {
-  padding: 2rem;
-}
-.project-name {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--primary);
-}
-.project-meta {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-.project-description {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-}
+    /* Noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
 
-/* Tech Badges */
-.badge-tech {
-  background: #e0f2fe;
-  color: #0369a1;
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-right: 0.4rem;
-  margin-bottom: 0.5rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: 50px;
-  display: inline-block;
-  transition: all 0.25s ease;
-}
-.badge-tech:hover {
-  background: var(--primary);
-  color: #ffffff;
-  transform: scale(1.05);
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-/* Buttons */
-.btn-outline-primary {
-  border-color: var(--primary);
-  color: var(--primary);
-  transition: all 0.3s ease;
-}
-.btn-outline-primary:hover {
-  background: var(--primary);
-  color: white;
-}
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+      transition: var(--transition);
+    }
 
-/* Carousel Controls */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 120, 212, 0.1);
-  border: 1px solid var(--primary);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background: rgba(0, 120, 212, 0.2);
-  transform: translateY(-50%) scale(1.1);
-}
+    nav.scrolled {
+      border-bottom-color: var(--border);
+    }
 
-/* Carousel Caption */
-.carousel-caption {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  color: var(--text-dark);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  box-shadow: var(--shadow);
-}
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* Footer */
-footer {
-  background: #f1f5f9;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border);
-  font-size: 0.95rem;
-}
-footer p span {
-  color: var(--primary);
-  font-weight: 600;
-}
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .project-carousel img {
-    height: 260px;
-  }
-  .project-content {
-    padding: 1.5rem;
-  }
-}
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--bg-primary);
+    }
 
-/* Scroll Animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      background: var(--bg-card);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 140px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: var(--accent-tertiary);
+      filter: blur(200px);
+      opacity: 0.08;
+      border-radius: 50%;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 40px 0 100px;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .project-layout.reverse {
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    .project-layout.reverse .project-visual {
+      order: 2;
+    }
+
+    .project-layout.reverse .project-content {
+      order: 1;
+    }
+
+    /* Project Visual */
+    .project-visual {
+      position: relative;
+      background: var(--bg-secondary);
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    .project-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .project-slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .project-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-slide.active {
+      opacity: 1;
+    }
+
+    .project-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slide-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .slide-btn:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .slide-indicators {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .slide-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slide-indicator.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+
+    /* Project Content */
+    .project-content {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .project-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 6px 12px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .project-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .project-meta {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .project-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .project-highlights {
+      margin-bottom: 24px;
+    }
+
+    .project-highlights h4 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .highlight-list {
+      list-style: none;
+    }
+
+    .highlight-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .highlight-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-primary);
+      padding: 8px 14px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-tag {
+      border-color: var(--border-hover);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
+
+    /* Featured Badge */
+    .featured-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--gradient-1);
+      color: var(--bg-primary);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 50px;
+      z-index: 10;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 60px 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 80px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 0 0 100px;
+    }
+
+    .cta-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: var(--accent-secondary);
+      filter: blur(150px);
+      opacity: 0.1;
+      border-radius: 50%;
+      top: -200px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-text {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-social:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu .nav-link {
+      font-size: 1.2rem;
+      padding: 16px 32px;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .project-layout,
+      .project-layout.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .project-layout.reverse .project-visual,
+      .project-layout.reverse .project-content {
+        order: unset;
+      }
+
+      .project-visual {
+        min-height: 300px;
+      }
+
+      .project-content {
+        padding: 32px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .project-name {
+        font-size: 1.5rem;
+      }
+
+      .project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .cta-card {
+        padding: 40px 24px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-lg">
-      <a class="navbar-brand" href="../../index.html">Héctor Richart</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="resume.html">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="projects.html">Projects</a></li>
-        </ul>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container nav-content">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">HR</span>
+        <span>hrichart.dev</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="resume.html" class="nav-link">Experience</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
       </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+      </button>
     </div>
   </nav>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <a href="../../index.html" class="nav-link">Home</a>
+    <a href="resume.html" class="nav-link">Experience</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="projects.html" class="nav-link active">Projects</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <div class="page-badge">
+        <i class="bi bi-folder2-open"></i>
+        <span>Portfolio</span>
+      </div>
+      <h1 class="page-title">Featured Projects</h1>
+      <p class="page-subtitle">
+        A collection of work spanning full-stack development, research, and cybersecurity.
+      </p>
+    </div>
+  </header>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Featured Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Technologies Used</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Published Paper</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Problems Solved</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section -->
   <section class="projects-section">
-    <div class="container-lg">
-      <h1 class="projects-title fade-in">My Projects</h1>
-
-      <!-- FITCULT -->
-      <div class="project-card fade-in">
-        <div class="row g-0">
-          <div class="col-md-7">
-            <div id="fitcultCarousel" class="carousel slide project-carousel" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../../images/fitcult_project/landing.png" alt="FitCult landing" />
-                  <div class="carousel-caption"><p>Landing page with sign-in/sign-up options and value proposition.</p></div>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../images/fitcult_project/registration_and_payment.png" alt="Registration and payment" />
-                  <div class="carousel-caption"><p>Secure registration and payment flow with Firebase backend.</p></div>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../images/fitcult_project/goal_tracking.png" alt="Goal tracking" />
-                  <div class="carousel-caption"><p>Dashboard tracking user goals and workout progress metrics.</p></div>
-                </div>
+    <div class="container">
+      <!-- Project 1: FitCult -->
+      <div class="project-card" id="project-fitcult">
+        <div class="project-layout">
+          <div class="project-visual">
+            <span class="featured-badge">Featured</span>
+            <div class="project-slides" data-project="fitcult">
+              <div class="project-slide active">
+                <img src="../../images/fitcult_project/landing.png" alt="FitCult Landing">
+                <div class="slide-caption">Landing page with sign-in/sign-up options and value proposition.</div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#fitcultCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
+              <div class="project-slide">
+                <img src="../../images/fitcult_project/registration_and_payment.png" alt="Registration">
+                <div class="slide-caption">Secure registration and payment flow with Firebase backend.</div>
+              </div>
+              <div class="project-slide">
+                <img src="../../images/fitcult_project/goal_tracking.png" alt="Goal Tracking">
+                <div class="slide-caption">Dashboard tracking user goals and workout progress metrics.</div>
+              </div>
+            </div>
+            <div class="slide-indicators" data-project="fitcult">
+              <span class="slide-indicator active" data-index="0"></span>
+              <span class="slide-indicator" data-index="1"></span>
+              <span class="slide-indicator" data-index="2"></span>
+            </div>
+            <div class="slide-nav">
+              <button class="slide-btn" onclick="changeSlide('fitcult', -1)">
+                <i class="bi bi-chevron-left"></i>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#fitcultCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
+              <button class="slide-btn" onclick="changeSlide('fitcult', 1)">
+                <i class="bi bi-chevron-right"></i>
               </button>
             </div>
           </div>
-          <div class="col-md-5">
-            <div class="project-content">
-              <h3 class="project-name">FitCult</h3>
-              <span class="project-meta">School Project | May 2023</span>
-              <p class="project-description">
-                Full-stack fitness tracking app developed with Agile sprints.  
-                Role: Full-stack dev & scrum facilitator.  
-                Tracks metrics, goals, and uploads progress photos using Firebase NoSQL.
-              </p>
-              <div>
-                <span class="badge-tech">HTML5</span>
-                <span class="badge-tech">JavaScript</span>
-                <span class="badge-tech">CSS</span>
-                <span class="badge-tech">Firebase</span>
-                <span class="badge-tech">Agile</span>
-              </div>
+          <div class="project-content">
+            <span class="project-number">01</span>
+            <div class="project-type">
+              <i class="bi bi-mortarboard"></i>
+              Academic Project
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NAÏVE -->
-      <div class="project-card fade-in">
-        <div class="row g-0">
-          <div class="col-md-7">
-            <div id="naiveCarousel" class="carousel slide project-carousel" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../../images/naive/landing.png" alt="NAÏVE landing" />
-                  <div class="carousel-caption"><p>Home interface for project creation and management.</p></div>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../images/naive/cyberva.png" alt="CyberVA dashboard" />
-                  <div class="carousel-caption"><p>CyberVA dashboard visualizing network vulnerabilities.</p></div>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#naiveCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#naiveCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-              </button>
+            <h2 class="project-name">FitCult</h2>
+            <div class="project-meta">
+              <span><i class="bi bi-calendar3"></i> May 2023</span>
+              <span><i class="bi bi-people"></i> Team of 4</span>
             </div>
-          </div>
-          <div class="col-md-5">
-            <div class="project-content">
-              <h3 class="project-name">NAÏVE</h3>
-              <span class="project-meta">School Project | May 2023</span>
-              <p class="project-description">
-                Web-based tool for cybersecurity analysts, running locally or on cloud servers.  
-                Aggregates penetration-testing data and visualizes analytics in real time.
-              </p>
-              <div>
-                <span class="badge-tech">Python</span>
-                <span class="badge-tech">Kali Linux</span>
-                <span class="badge-tech">Cybersecurity</span>
-                <span class="badge-tech">Cloud</span>
-              </div>
+            <p class="project-description">
+              Full-stack fitness tracking application developed using Agile methodology. Features include goal tracking, progress metrics, photo uploads, and personalized workout plans.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Contributions</h4>
+              <ul class="highlight-list">
+                <li>Led development as Full-Stack Dev & Scrum Facilitator</li>
+                <li>Implemented Firebase NoSQL for real-time data sync</li>
+                <li>Designed responsive UI/UX with progress visualization</li>
+              </ul>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">Agile</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- MSA Research -->
-      <div class="project-card fade-in">
-        <div class="row g-0">
-          <div class="col-md-7 d-flex align-items-center justify-content-center" style="background: #f9fafb;">
-            <img src="../../images/couri_poster.png" alt="COURI Poster" class="img-fluid" style="max-height: 380px; object-fit: contain;">
-          </div>
-          <div class="col-md-5">
-            <div class="project-content">
-              <h3 class="project-name">Multiple-Sequence Alignment Script</h3>
-              <span class="project-meta">Undergrad Research | Sep 2022</span>
-              <p class="project-description">
-                Independent research under Dr. Daniel DeBlasio.  
-                Enhanced MSA accuracy using Python and structural data integration.  
-                Published on bioRxiv after university presentation.
-              </p>
-              <div>
-                <span class="badge-tech">Python</span>
-                <span class="badge-tech">Linux CLI</span>
-                <span class="badge-tech">Bioinformatics</span>
+      <!-- Project 2: NAÏVE -->
+      <div class="project-card" id="project-naive">
+        <div class="project-layout reverse">
+          <div class="project-visual">
+            <div class="project-slides" data-project="naive">
+              <div class="project-slide active">
+                <img src="../../images/naive/landing.png" alt="NAÏVE Landing">
+                <div class="slide-caption">Home interface for project creation and management.</div>
               </div>
-              <a href="https://www.biorxiv.org/content/10.1101/2022.05.22.493004v3.full.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary mt-2">
-                <i class="bi bi-file-earmark-text me-1"></i> Read Published Paper
+              <div class="project-slide">
+                <img src="../../images/naive/cyberva.png" alt="CyberVA Dashboard">
+                <div class="slide-caption">CyberVA dashboard visualizing network vulnerabilities.</div>
+              </div>
+            </div>
+            <div class="slide-indicators" data-project="naive">
+              <span class="slide-indicator active" data-index="0"></span>
+              <span class="slide-indicator" data-index="1"></span>
+            </div>
+            <div class="slide-nav">
+              <button class="slide-btn" onclick="changeSlide('naive', -1)">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button class="slide-btn" onclick="changeSlide('naive', 1)">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-number">02</span>
+            <div class="project-type">
+              <i class="bi bi-shield-check"></i>
+              Cybersecurity Tool
+            </div>
+            <h2 class="project-name">NAÏVE</h2>
+            <div class="project-meta">
+              <span><i class="bi bi-calendar3"></i> May 2023</span>
+              <span><i class="bi bi-people"></i> Team of 3</span>
+            </div>
+            <p class="project-description">
+              Web-based penetration testing aggregation tool for cybersecurity analysts. Runs locally or on cloud servers, consolidating scan data into actionable visualizations.
+            </p>
+            <div class="project-highlights">
+              <h4>Key Features</h4>
+              <ul class="highlight-list">
+                <li>Real-time vulnerability visualization dashboard</li>
+                <li>Integration with common pentesting tools</li>
+                <li>Cloud-ready architecture with local deployment option</li>
+              </ul>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Kali Linux</span>
+              <span class="project-tag">Cybersecurity</span>
+              <span class="project-tag">Cloud</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: MSA Research -->
+      <div class="project-card" id="project-msa">
+        <div class="project-layout">
+          <div class="project-visual" style="display: flex; align-items: center; justify-content: center; padding: 40px; background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);">
+            <img src="../../images/couri_poster.png" alt="COURI Research Poster" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--radius-md); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+          </div>
+          <div class="project-content">
+            <span class="project-number">03</span>
+            <div class="project-type" style="background: rgba(74, 222, 128, 0.1); color: var(--accent-tertiary);">
+              <i class="bi bi-journal-text"></i>
+              Published Research
+            </div>
+            <h2 class="project-name">Multiple-Sequence Alignment Script</h2>
+            <div class="project-meta">
+              <span><i class="bi bi-calendar3"></i> Sep 2022</span>
+              <span><i class="bi bi-person"></i> Independent Research</span>
+            </div>
+            <p class="project-description">
+              Undergraduate research under Dr. Daniel DeBlasio focused on enhancing multiple sequence alignment accuracy through secondary structure data integration.
+            </p>
+            <div class="project-highlights">
+              <h4>Research Impact</h4>
+              <ul class="highlight-list">
+                <li>Improved MSA accuracy using structural biology data</li>
+                <li>Presented findings at university symposium</li>
+                <li>Published on bioRxiv as co-author</li>
+              </ul>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Linux CLI</span>
+              <span class="project-tag">Bioinformatics</span>
+              <span class="project-tag">Research</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.biorxiv.org/content/10.1101/2022.05.22.493004v3.full.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="bi bi-file-earmark-pdf"></i> Read Paper
               </a>
             </div>
           </div>
@@ -360,17 +1034,131 @@ footer p span {
     </div>
   </section>
 
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2 class="cta-title">Have a project in mind?</h2>
+        <p class="cta-text">
+          I'm always interested in hearing about new opportunities and challenging projects.
+        </p>
+        <div class="cta-buttons">
+          <a href="../../index.html#contact" class="btn btn-primary">
+            <i class="bi bi-send"></i> Let's Talk
+          </a>
+          <a href="https://github.com/HectorRichart" target="_blank" class="btn btn-secondary">
+            <i class="bi bi-github"></i> View GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
-    <p>© 2025 <span>Héctor Richart</span> — Crafted with ☕ and clean code</p>
+    <div class="container footer-content">
+      <div class="footer-text">
+        © 2025 Héctor Richart — Crafted with precision
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/hector-richart/" target="_blank" class="footer-social">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/HectorRichart" target="_blank" class="footer-social">
+          <i class="bi bi-github"></i>
+        </a>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-    },{threshold:0.1});
-    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+    // Slide state
+    const slideState = {
+      fitcult: 0,
+      naive: 0
+    };
+
+    const slideCounts = {
+      fitcult: 3,
+      naive: 2
+    };
+
+    // Change slide
+    function changeSlide(project, direction) {
+      const count = slideCounts[project];
+      slideState[project] = (slideState[project] + direction + count) % count;
+      updateSlides(project);
+    }
+
+    // Update slides display
+    function updateSlides(project) {
+      const slides = document.querySelectorAll(`.project-slides[data-project="${project}"] .project-slide`);
+      const indicators = document.querySelectorAll(`.slide-indicators[data-project="${project}"] .slide-indicator`);
+      
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === slideState[project]);
+      });
+      
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === slideState[project]);
+      });
+    }
+
+    // Click on indicators
+    document.querySelectorAll('.slide-indicator').forEach(indicator => {
+      indicator.addEventListener('click', () => {
+        const project = indicator.parentElement.dataset.project;
+        const index = parseInt(indicator.dataset.index);
+        slideState[project] = index;
+        updateSlides(project);
+      });
+    });
+
+    // Auto-advance slides
+    setInterval(() => {
+      Object.keys(slideState).forEach(project => {
+        changeSlide(project, 1);
+      });
+    }, 5000);
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px)';
+      el.style.transition = `opacity 0.7s ease ${index * 0.15}s, transform 0.7s ease ${index * 0.15}s`;
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
