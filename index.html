@@ -1015,9 +1015,20 @@ footer{
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 13V3M8 3L3.5 7.5M8 3l4.5 4.5"/></svg>
 </button>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 <script>
+/* ═══════════════════════════════════════════════════════════════
+   SAFETY NET — never let the intro get stuck, no matter what
+   fails or hangs elsewhere on the page (slow/blocked networks,
+   GPU driver quirks, etc). Runs first, independent of everything.
+   ═══════════════════════════════════════════════════════════════ */
+setTimeout(() => {
+  const intro = document.getElementById('intro');
+  if (intro && !intro.classList.contains('done')) {
+    intro.classList.add('done');
+    document.body.classList.add('ready');
+  }
+}, 4000);
+
 /* ═══════════════════════════════════════════════════════════════
    DATA — edit here, the DOM builds itself
    ═══════════════════════════════════════════════════════════════ */
@@ -1087,8 +1098,11 @@ const ARROW = '<svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="curren
 
   const FALLBACK = 'radial-gradient(90% 70% at 50% 30%, #14161a, #08090a 70%)';
 
-  const gl = cv.getContext('webgl', { alpha:true, antialias:false, powerPreference:'low-power' })
-          || cv.getContext('experimental-webgl');
+  let gl;
+  try {
+    gl = cv.getContext('webgl', { alpha:true, antialias:false, powerPreference:'low-power' })
+      || cv.getContext('experimental-webgl');
+  } catch (err) { gl = null; }
   if (!gl) { cv.style.background = FALLBACK; cv.classList.add('in'); return; }
 
   // GPU switches and wake-from-sleep can drop the context — fall back quietly
@@ -1499,7 +1513,8 @@ document.getElementById('works').innerHTML = DATA.work.map((w, wi) => `
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* ═══════════════════════════════════════════════════════════════
-   CONTACT FORM (EmailJS)
+   CONTACT FORM (EmailJS) — loaded asynchronously so a slow/blocked
+   CDN request on mobile networks can never hang the rest of the page
    ═══════════════════════════════════════════════════════════════ */
 {
   const form = document.getElementById('form');
@@ -1507,9 +1522,16 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   const note = document.getElementById('note');
   const label = btn.querySelector('span');
 
-  if (window.emailjs) emailjs.init(DATA.emailjs.key);
-
   const say = (msg, cls = '') => { note.textContent = msg; note.className = 'form-note ' + cls; };
+
+  (function loadEmailJS(){
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    s.async = true;
+    s.onload = () => { if (window.emailjs) emailjs.init(DATA.emailjs.key); };
+    s.onerror = () => console.warn('EmailJS failed to load — form will show a fallback message on submit.');
+    document.head.appendChild(s);
+  })();
 
   form.addEventListener('submit', e => {
     e.preventDefault();
